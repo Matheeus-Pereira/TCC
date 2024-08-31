@@ -16,13 +16,21 @@ menu {
     background-color: blue;
     height: 100%;
     width: auto;
+    left: -34vh;
+   
 }
 table{
+   
     margin: 3vh;
 }
 tr{
+    border: solid;
     display: block;
     padding: 5vh;
+}
+td{
+    width: 100%;
+    border: solid 2px red;
 }
 .icone {
     
@@ -37,4 +45,18 @@ tr{
     height: 10vh;
     border-top-right-radius: 15%;
     border-bottom-right-radius: 15%;
+    cursor: pointer;
 }
+.icone{
+    opacity: 0.9;
+}
+.icone:hover{
+    opacity: 1;
+}
+
+.icone>img{
+    margin: 1vh;
+max-width: 8vh;
+cursor: pointer;
+}
+
