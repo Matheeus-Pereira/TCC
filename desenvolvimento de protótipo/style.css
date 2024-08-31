@@ -1,6 +1,8 @@
 * {
     margin: 0;
+    color: #1d1d1d;
 }
+
 
 header {
     background-color: blue;
@@ -8,8 +10,13 @@ header {
     height: 25vh;
 }
 
+header>img {
+    max-width: 100%;
+    max-height: 100%;
+
+}
+
 nav {
-    align-items: flex-start;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -17,21 +24,22 @@ nav {
     height: 100%;
     width: auto;
     left: -42vh;
-   transition: left 300ms ease-in-out;
+    transition: left 300ms ease-in-out;
+    align-items: center;
 
 }
 
-
+h1 {
+    padding-right: 15vh;
+    padding-left: 15vh;
+    border-bottom: solid 2px;
+}
 
 
 .icone {
-
-    border-top: solid 1px;
-    border-bottom: solid 1px;
-    border-right: solid 1px;
     position: relative;
-    right: -41vh;
-    top: -4vh;
+    right: -25vh;
+    top: -6vh;
     background-color: rgb(0, 0, 255);
     width: 10vh;
     height: 10vh;
@@ -57,7 +65,7 @@ nav {
 .func {
     display: flex;
     flex-direction: column;
-    text-align: center;
+   
 }
 
 .func>h2 {
