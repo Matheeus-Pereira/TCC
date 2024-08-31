@@ -8,7 +8,7 @@ header {
     height: 25vh;
 }
 
-menu {
+nav {
     align-items: flex-start;
     position: fixed;
     display: flex;
@@ -16,29 +16,21 @@ menu {
     background-color: blue;
     height: 100%;
     width: auto;
-    left: -34vh;
-   
+    left: -42vh;
+   transition: left 300ms ease-in-out;
+
 }
-table{
-   
-    margin: 3vh;
-}
-tr{
-    border: solid;
-    display: block;
-    padding: 5vh;
-}
-td{
-    width: 100%;
-    border: solid 2px red;
-}
+
+
+
+
 .icone {
-    
+
     border-top: solid 1px;
     border-bottom: solid 1px;
     border-right: solid 1px;
     position: relative;
-    right: -25vh;
+    right: -41vh;
     top: -4vh;
     background-color: rgb(0, 0, 255);
     width: 10vh;
@@ -47,16 +39,39 @@ td{
     border-bottom-right-radius: 15%;
     cursor: pointer;
 }
-.icone{
+
+.icone {
     opacity: 0.9;
 }
-.icone:hover{
+
+.icone:hover {
     opacity: 1;
 }
 
-.icone>img{
+.icone>img {
     margin: 1vh;
-max-width: 8vh;
-cursor: pointer;
+    max-width: 8vh;
+    cursor: pointer;
 }
 
+.func {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.func>h2 {
+
+    border-radius: 25rem;
+    padding: 1vh;
+    cursor: pointer;
+    opacity: 1;
+    margin: 2vh;
+    border-top: solid 1px;
+
+}
+
+.func>h2:hover {
+    opacity: 0.8;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
