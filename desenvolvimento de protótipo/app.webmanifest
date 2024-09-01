@@ -1,0 +1,35 @@
+{
+    "name":"Protótipo TCC",
+    "short_name":"TCC",
+    "start_url":"./index.html",
+    "id":"/desenvolvimento/index.html",
+    "display": "standalone",
+    "background_color":"#fff",
+    "description":"app para uso de teste",
+    "icons":[
+        {
+            "src":"./img/logo.png",
+            "sizes":"1024x1024",
+            "type":"image/png",
+            "purpose":"any"
+        },
+        {
+            "src": "./img/logo.png",
+            "sizes": "1024x1024",
+            "type": "image/png"
+        }
+    ],
+    "screenshots":[
+        {
+           
+            "sizes":"1024x1024",
+            "type":"image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src":"./img/logo.png",
+            "sizes":"1024x1024",
+            "type":"image/png"
+        }
+    ]
+}
