@@ -83,21 +83,34 @@ h1 {
     opacity: 0.8;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-
-@media screen and (max-width:800px) {
-  nav{
-    left:-42vh;
-  }
-  nav{
-    left:-42vh;
-  }
+.menu{
+    
+    display: none;
 }
 @media screen and (max-width:800px) {
-
+  nav{
+    display: none;
+  }
+  .menu{
+    display: flex;
+    flex-direction: column;
+  }
+  body{
+    background-color: blue;
+  }
+.func h2{
+    padding: 5vh;
+}
  header{
-   height: 14vh;
+    
+  background: url(img/cabecalhomobile.png);
+  background-size: cover;
+  background-position: center;
+  
+    height: 14vh;
   }
-  header>img{max-width: 137%;
-   
+  header>img{
+  display: none;
 }
+
 }

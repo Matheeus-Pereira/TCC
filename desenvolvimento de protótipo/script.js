@@ -10,17 +10,13 @@ icone.addEventListener('click', () => {
     const leftmenu = pxTovh(window.getComputedStyle(menu).left);
     const value = leftmenu;
     console.log("teste01")
-    if (value == -42 || value==-46) {
+    if (value == -42) {
         menu.style.left = '0vh';
         console.log("teste02")
         console.log(value)
-        vmobile = value;
-    } else if(vmobile==-46) {
-        menu.style.left = '-46vh';
-        console.log("teste03")
-    }else{
+    } else {
         menu.style.left = '-42vh';
-        console.log('teste04');
+        console.log("teste03")
     }
 
 
