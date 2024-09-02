@@ -3,6 +3,8 @@ const menu = document.getElementById('menu');
 const transferir = document.getElementById('func1');
 const editEestoque = document.getElementById('func1');
 let uso = false;
+
+
 transferir.addEventListener('click', () => {
     const telaTrasf = document.getElementById('transferencia');
     const teladisplay = window.getComputedStyle(telaTrasf).display;

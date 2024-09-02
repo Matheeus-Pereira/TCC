@@ -132,9 +132,6 @@ form table {
     padding: 5vh;
 }
 
-.hidden {
-    display: none;
-}
 
 
 @media screen and (max-width:800px) {
@@ -154,9 +151,7 @@ form table {
         background-size: cover;
     }
 
-    .func h2 {
-        padding: 5vh, 2vh;
-    }
+   
 
     header {
 
@@ -169,6 +164,21 @@ form table {
 
     header>img {
         display: none;
+    }
+
+    .transfmobile{
+        display: flex;
+        flex-direction: column;
+        max-width: 30vh;
+        align-items: center;
+    }
+   
+    h3{
+        padding: 1px;
+        margin-right: 4px;
+    }
+    button{
+        align-self: center;
     }
 
 }
