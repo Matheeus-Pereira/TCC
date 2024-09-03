@@ -132,7 +132,9 @@ form table {
     padding: 5vh;
 }
 
-
+.transfmobile{
+    display: none;
+}
 
 @media screen and (max-width:800px) {
     nav {
@@ -167,6 +169,8 @@ form table {
     }
 
     .transfmobile{
+        background-color: #fdfdfd;
+        border-radius: 2vh;
         display: flex;
         flex-direction: column;
         max-width: 30vh;

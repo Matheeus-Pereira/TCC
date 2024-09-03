@@ -1,9 +1,65 @@
+'use strict';
 const icone = document.getElementById('icone');
 const menu = document.getElementById('menu');
 const transferir = document.getElementById('func1');
-const editEestoque = document.getElementById('func1');
+const editEestoque = document.getElementById('func2');
 let uso = false;
 
+var video = document.querySelector('video');
+var cameraButton = document.getElementById('scan');
+var stream;
+
+var constraints = {
+    audio: false,
+    video: {
+        facimode: {
+            exact: "environment"
+        }
+    }
+}
+var erro = document.getElementById('error');
+
+function startcamera() {
+    navigator.mediaDevices.getUserMedia(constraints)
+        .then((mediaStream) => {
+            stream = mediaStream;
+            video.srcObject = stream;
+            cameraButton.textContent = "desligar"
+        })
+        .catch((error) => {
+            error("erro ao acessar cmaera: 0" + error.name)
+        });
+
+}
+function stopcamera() {
+    if (stream) {
+        stream.getracks().forEach((track) => {
+            track.stop();
+        });
+        video.srcObject = null;
+        stream = null;
+        cameraButton.textContent = "ligar";
+    }
+};
+
+cameraButton.addEventListener('click', () => {
+    if (stream) {
+        stopcamera();
+    } else {
+        startcamera();
+    }
+});
+
+startcamera();
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then(function (registration) {
+            console.log('Service Worker registrado com sucesso:', registration);
+        })
+        .catch(function (error) {
+            console.log('Falha ao registrar o Service Worker:', error);
+        });
+}
 
 transferir.addEventListener('click', () => {
     const telaTrasf = document.getElementById('transferencia');
@@ -64,4 +120,12 @@ function transfere() {
 }
 function editarmz() {
 
+}
+
+
+function errorMsg(msg, error) {
+    errorElement.innerHTML += "<p>" + msg + "</p>";
+    if (typeof error !== "undefined") {
+        console.error(error);
+    }
 }
