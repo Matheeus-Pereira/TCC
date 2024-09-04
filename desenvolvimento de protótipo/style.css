@@ -136,6 +136,7 @@ form table {
     display: none;
 }
 
+
 @media screen and (max-width:800px) {
     nav {
         display: none;
@@ -173,8 +174,9 @@ form table {
         border-radius: 2vh;
         display: flex;
         flex-direction: column;
-        max-width: 30vh;
-        align-items: center;
+        align-items: center; 
+        width: 70vw;
+        height: 55vh;
     }
    
     h3{

@@ -6,17 +6,18 @@ const editEestoque = document.getElementById('func2');
 let uso = false;
 
 var video = document.querySelector('video');
-var cameraButton = document.getElementById('scan');
+var cameraButton = document.getElementById('cameraButton');
 var stream;
 
 var constraints = {
     audio: false,
     video: {
-        facimode: {
+        facingMode: {
             exact: "environment"
+
         }
     }
-}
+};
 var erro = document.getElementById('error');
 
 function startcamera() {
@@ -46,11 +47,9 @@ cameraButton.addEventListener('click', () => {
     if (stream) {
         stopcamera();
     } else {
-        startcamera();
+        startcamera();//fazer essa função ligar com o botão de realizar transferencias e desligar com o de ler o codigo de barras
     }
 });
-
-startcamera();
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
         .then(function (registration) {
