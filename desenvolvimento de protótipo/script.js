@@ -3,6 +3,9 @@ const icone = document.getElementById('icone');
 const menu = document.getElementById('menu');
 const transferir = document.getElementById('func1');
 const editEestoque = document.getElementById('func2');
+var canvas = document.getElementById('codereader');
+var teste = document.getElementById('teste');
+
 let uso = false;
 
 var video = document.querySelector('video');
@@ -23,9 +26,9 @@ function startcamera() {
     navigator.mediaDevices.getUserMedia(constraints)
         .then((mediaStream) => {
             stream = mediaStream;
-            video.srcObject = stream; 
+            video.srcObject = stream;
         })
-       
+
 
 }
 function stopcamera() {
@@ -40,10 +43,10 @@ function stopcamera() {
 };
 
 
-function mobileTransf(){
+function mobileTransf() {
     if (stream) {
         stopcamera();
-    }else{
+    } else {
         startcamera();
     }
 }
@@ -126,4 +129,16 @@ function errorMsg(msg, error) {
     if (typeof error !== "undefined") {
         console.error(error);
     }
+}
+
+function Photo() {
+    var contexto = canvas.getContext('2d');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+
+    contexto.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+    var img = document.createElement("img");
+    img.src = canvas.toDataURL("image/png");
+    teste.appendChild(img);
 }

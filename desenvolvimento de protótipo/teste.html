@@ -15,7 +15,7 @@
 
 <body>
     <header>
-        <img src="img/imgcabecalho.png" alt="cabeçãlho">
+        <img src="img/imgcabecalho.png" alt="cabeçalho">
     </header>
 
     <nav id="menu">
@@ -86,13 +86,14 @@
 
 
 
-    <form action="" id="" class="transfmobile">
+    <form action=""  class="transfmobile">
         <h3>aponte a camera para o codigo de barras</h3>
         <video autoplay playsinline class="transfmobile"></video>
-        <button id="scan">Ler codigo</button>
+        <canvas id="codereader" ></canvas>
+        <button id="scan" onclick="Photo()">Ler codigo</button>
        
     </form>
-
+<div id="teste"></div>
 
     <form action="" id="editarmazem" class="edit2">
 

@@ -140,7 +140,9 @@ form table {
 #func2 {
     user-select: none;
 }
-
+canvas{
+display: none;
+}
 @media screen and (max-width:800px) {
     nav {
         display: none;
