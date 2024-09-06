@@ -6,14 +6,13 @@ const editEestoque = document.getElementById('func2');
 let uso = false;
 
 var video = document.querySelector('video');
-var cameraButton = document.getElementById('cameraButton');
 var stream;
 
 var constraints = {
     audio: false,
     video: {
         facingMode: {
-            exact: "environment"
+            ideal: "environment"
 
         }
     }
@@ -24,32 +23,32 @@ function startcamera() {
     navigator.mediaDevices.getUserMedia(constraints)
         .then((mediaStream) => {
             stream = mediaStream;
-            video.srcObject = stream;
-            cameraButton.textContent = "desligar"
+            video.srcObject = stream; 
         })
-        .catch((error) => {
-            error("erro ao acessar cmaera: 0" + error.name)
-        });
+       
 
 }
 function stopcamera() {
     if (stream) {
-        stream.getracks().forEach((track) => {
+        stream.getTracks().forEach((track) => {
             track.stop();
         });
         video.srcObject = null;
         stream = null;
-        cameraButton.textContent = "ligar";
     }
+
 };
 
-cameraButton.addEventListener('click', () => {
+
+function mobileTransf(){
     if (stream) {
         stopcamera();
-    } else {
-        startcamera();//fazer essa função ligar com o botão de realizar transferencias e desligar com o de ler o codigo de barras
+    }else{
+        startcamera();
     }
-});
+}
+
+
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
         .then(function (registration) {
@@ -85,7 +84,7 @@ icone.addEventListener('click', () => {
         console.log("teste03")
     } if (uso == true) {
         menu.style.left = '-42vh';
-        alerta();
+        alerta("não é possivel trocar de função sem fechar a função atual");
         console.log("devia fazer o alerta")
     }
 
@@ -93,8 +92,8 @@ icone.addEventListener('click', () => {
 
 });
 
-function alerta() {
-    alert("é necessário fechar a funcionalidade atua!");
+function alerta(x) {
+    alert(x);
 }
 
 function pxTovh(numpx) {
