@@ -4,7 +4,6 @@ const menu = document.getElementById('menu');
 const transferir = document.getElementById('func1');
 const editEestoque = document.getElementById('func2');
 var canvas = document.getElementById('codereader');
-var teste = document.getElementById('teste');
 
 let uso = false;
 
@@ -140,5 +139,5 @@ function Photo() {
 
     var img = document.createElement("img");
     img.src = canvas.toDataURL("image/png");
-    teste.appendChild(img);
+    return img;
 }
