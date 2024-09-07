@@ -141,3 +141,30 @@ function Photo() {
     img.src = canvas.toDataURL("image/png");
     return img;
 }
+
+function readBarcode(x) {
+    var teset = document.getElementById('teste')
+    Quagga.init({
+        inputStream: {
+            type: "LiveStream",
+            target: x, constraints
+        },
+        decoder: {
+            readers: ["code_128_reader", "ean_8_reader", "upc_reader"]
+        }
+    }, function (err) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        Quagga.start();
+        console.log("quagga lendo barcode");
+    });
+
+    Quagga.onDetected(function (data) {
+        console.log("codigo de barras lido: ", data.codeResult.code);
+
+        teset.innerHTML += "<p>" + data.codeResult.code + "</p>"
+        Quagga.stop();
+    });
+}
