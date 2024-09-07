@@ -1,4 +1,5 @@
 'use strict';
+
 const icone = document.getElementById('icone');
 const menu = document.getElementById('menu');
 const transferir = document.getElementById('func1');
@@ -43,9 +44,17 @@ function stopcamera() {
 
 
 function mobileTransf() {
+    var face = document.getElementById('face');
+    face.style.transition='400ms';
+    face.style.transitionDelay='400ms';
+
     if (stream) {
+        face.style.display = 'none';
+        video.style.display = 'none';
         stopcamera();
     } else {
+        face.style.display = 'flex';
+        video.style.display = 'flex';
         startcamera();
     }
 }
@@ -142,29 +151,28 @@ function Photo() {
     return img;
 }
 
-function readBarcode(x) {
-    var teset = document.getElementById('teste')
-    Quagga.init({
-        inputStream: {
-            type: "LiveStream",
-            target: x, constraints
-        },
+function readBarcode(code) {
+
+    if (!code || !code.src) {
+        console.error("imagem não fornecida ou não carregada")
+        return;
+    }
+
+    Quagga.decodeSingle({
+        src: code.src,
+        numOfWorkers: 0,
         decoder: {
             readers: ["code_128_reader", "ean_8_reader", "upc_reader"]
         }
-    }, function (err) {
-        if (err) {
-            console.log(err);
-            return;
-        }
-        Quagga.start();
-        console.log("quagga lendo barcode");
-    });
+    },
+        (result) => {
+            const teset = document.getElementById('teste');
+            if (result && result.codeResult) {
+                console.log('Código de barras lido: ', result.codeResult.code);
+                teset.innerHTML = `<p>${result.codeResult.code}</p>`;
 
-    Quagga.onDetected(function (data) {
-        console.log("codigo de barras lido: ", data.codeResult.code);
-
-        teset.innerHTML += "<p>" + data.codeResult.code + "</p>"
-        Quagga.stop();
-    });
+            } else {
+                alerta("impossivel ler codigo de barras")
+            }
+        });
 }
