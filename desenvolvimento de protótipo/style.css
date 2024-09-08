@@ -36,11 +36,12 @@ nav {
 }
 
 
-h1 {
+nav h1 {
     padding-right: 15vh;
     padding-left: 15vh;
     border-bottom: solid 2px;
 }
+
 
 .transf1 {
     position: relative;
@@ -52,6 +53,18 @@ h1 {
     padding: 2rem;
     display: none;
     flex-direction: row;
+    box-shadow: rgba(22, 22, 94, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.edit{
+    position: relative;
+    top: 11vh;
+    border-top: solid 1px;
+    border-left: solid 1px;
+    border-radius: 2rem;
+    background-color: #fdfdfd;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
     box-shadow: rgba(22, 22, 94, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
@@ -132,6 +145,7 @@ form table {
     padding: 5vh;
 }
 
+
 .transfmobile {
     display: none;
 }
@@ -157,7 +171,7 @@ display: none;
     }
 
     body {
-        background-image: linear-gradient(140deg, rgb(92, 92, 252) 25%, rgb(60, 60, 255) 100%);
+        background-image: linear-gradient(140deg, rgb(92, 92, 252) 25%, rgb(92, 92, 252) 100%);
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-size: cover;
@@ -168,10 +182,11 @@ display: none;
     header {
 
         background: url(img/cabecalhomobile.png);
-        background-size: cover;
+        background-size: auto;
         background-position: center;
-
+        background-repeat: no-repeat;
         height: 14vh;
+        background-color: rgb(92, 92, 252);
     }
 
     header>img {
