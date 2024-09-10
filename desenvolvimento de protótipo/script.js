@@ -2,6 +2,7 @@
 
 const icone = document.getElementById('icone');
 const menu = document.getElementById('menu');
+const mobilemenu = document.getElementById('mobilemenu')
 const transferir = document.getElementById('func1');
 const editEestoque = document.getElementById('func2');
 var canvas = document.getElementById('codereader');
@@ -48,6 +49,7 @@ function mobileTransf() {
     face.style.transition = '400ms';
     face.style.transitionDelay = '400ms';
 
+
     if (stream) {
         face.style.display = 'none';
         video.style.display = 'none';
@@ -55,7 +57,17 @@ function mobileTransf() {
     } else {
         face.style.display = 'flex';
         video.style.display = 'flex';
+        mobilemenu.style.display = 'none';
         startcamera();
+    }
+}
+function mobilearmz() {
+    const armobile = document.getElementById('armobile');
+    const dispmobile = window.getComputedStyle(armobile).display;
+    if (dispmobile == 'none') {
+        armobile.style.display = 'flex'
+        mobilemenu.style.display = 'none'
+
     }
 }
 

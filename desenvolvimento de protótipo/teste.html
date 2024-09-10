@@ -37,13 +37,13 @@
 
     </nav>
 
-    <footer class="menu">
+    <footer class="menu" id="mobilemenu">
         <form action="" id="funcionalidades" class="func">
 
             <h2 id="func1" onclick="mobileTransf()">Transferencias</h2>
 
 
-            <h2 id="func2">Editar armazens</h2>
+            <h2 id="func2" onclick="mobilearmz()">Editar armazens</h2>
         </form>
     </footer>
 
@@ -94,6 +94,7 @@
         <h3>aponte a camera para o codigo de barras</h3>
         <video autoplay playsinline class="transfmobile"></video>
         <canvas id="codereader"></canvas>
+        <button class="endButton" onclick="fechar(this)">sair</button>
         <button id="scan" type="button" onclick="readBarcode(Photo())">Ler codigo</button>
 
     </form>
@@ -140,7 +141,7 @@
         <button onclick="pesquisa()" class="transferButton">Pesquisar</button>
     </form>
 
-    <form action="" id="armmobile" class="editmobile">
+    <form action="" id="armobile" class="editmobile">
         <table>
             <h1>armazens existentes</h1>
             <tr>
