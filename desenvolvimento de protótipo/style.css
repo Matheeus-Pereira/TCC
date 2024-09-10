@@ -52,12 +52,40 @@ nav h1 {
     background-color: #fdfdfd;
     padding: 2rem;
     display: none;
-    flex-direction: row;
+    flex-direction: column;
     box-shadow: rgba(22, 22, 94, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
-.edit{
-    position: relative;
-    top: 11vh;
+
+.edit {
+
+    border-top: solid 1px;
+    border-left: solid 1px;
+    border-radius: 2rem;
+    background-color: #fdfdfd;
+    padding: 2rem;
+    display: none;
+    flex-direction: column;
+    box-shadow: rgba(22, 22, 94, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    text-align: center;
+}
+
+.edit button {
+    align-self: center;
+    ;
+}
+
+.edit input {
+    width: auto;
+    padding: 2px;
+    background-color: rgb(136, 136, 255);
+    border: #fdfdfd;
+
+
+}
+
+.editmobile {
+    font-size: small;
+    max-width: 50vw;
     border-top: solid 1px;
     border-left: solid 1px;
     border-radius: 2rem;
@@ -66,7 +94,28 @@ nav h1 {
     display: flex;
     flex-direction: column;
     box-shadow: rgba(22, 22, 94, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    text-align: center;
+    align-items: center;
 }
+.editmobile h1{
+font-size: 15pt;
+}
+.editmobile input{
+max-width: 10vw;
+position: relative;
+}
+.posimobile {
+    border-top: solid 1px;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
+.posicomp {
+    border-top: solid 1px;
+    border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+}
+
 
 .icone {
     position: relative;
@@ -154,8 +203,9 @@ form table {
 #func2 {
     user-select: none;
 }
-canvas{
-display: none;
+
+canvas {
+    display: none;
 }
 
 

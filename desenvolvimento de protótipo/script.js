@@ -45,8 +45,8 @@ function stopcamera() {
 
 function mobileTransf() {
     var face = document.getElementById('face');
-    face.style.transition='400ms';
-    face.style.transitionDelay='400ms';
+    face.style.transition = '400ms';
+    face.style.transitionDelay = '400ms';
 
     if (stream) {
         face.style.display = 'none';
@@ -103,6 +103,16 @@ icone.addEventListener('click', () => {
 
 });
 
+editEestoque.addEventListener('click', () => {
+    const armazens = document.getElementById('editarmazem');
+    const armadisplay = window.getComputedStyle(armazens).display;
+    if (armadisplay == 'none') {
+        armazens.style.display = 'flex';
+        menu.style.left = '-42vh';
+        uso = true;
+    }
+})
+
 function alerta(x) {
     alert(x);
 }
@@ -116,7 +126,7 @@ function pxTovh(numpx) {
 function fechar(button) {
 
     const form = button.closest('form');
-    display = window.getComputedStyle(form).display
+    const display = window.getComputedStyle(form).display
 
     if (display == 'flex') {
         form.style.display = 'none';

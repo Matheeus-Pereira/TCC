@@ -104,23 +104,81 @@
             <h1>armazens existentes</h1>
             <tr>
                 <td>
-                    <p>nome:</p>
+                    <label for="deposito">Deposito</label>
                 </td>
                 <td>
-                    <input type="text">
+                    <input type="text" value="deposito geral" id="deposito">
                 </td>
                 <td>
-                    <p>numeração</p>
+                    <label for="dpnumb">Numeração</label>
                 </td>
                 <td>
-                    <input type="number" name="" id="">
+                    <input type="text" value="1" id="dpnumb">
                 </td>
             </tr>
         </table>
+        <table class="posicomp">
+            <h1>Posição de estoques completa</h1>
+            <tr>
+                <td>
+                    <label for="item">Código do item</label>
+                </td>
+                <td>
+                    <label for="deposito">Deposito</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="item">
+                </td>
+                <td>
+                    <input type="text" id="deposito">
+                </td>
+            </tr>
+        </table>
+        <button type="button" onclick='fechar(this)' class=" endButton">Fechar</button>
+        <button onclick="pesquisa()" class="transferButton">Pesquisar</button>
     </form>
 
-    <form action="" id="editarmazem" class="editmobile">
-
+    <form action="" id="armmobile" class="editmobile">
+        <table>
+            <h1>armazens existentes</h1>
+            <tr>
+                <td>
+                    <label for="deposito">Deposito</label>
+                </td>
+                <td>
+                    <input type="text" value="deposito geral" id="deposito">
+                </td>
+                <td>
+                    <label for="dpnumb">Numeração</label>
+                </td>
+                <td>
+                    <input type="text" value="1" id="dpnumb">
+                </td>
+            </tr>
+        </table>
+        <table class="posimobile">
+            <h1>Posição de estoques completa</h1>
+            <tr>
+                <td>
+                    <label for="item">Código do item</label>
+                </td>
+                <td>
+                    <label for="deposito">Deposito</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" id="item">
+                </td>
+                <td>
+                    <input type="text" id="deposito">
+                </td>
+            </tr>
+        </table>
+        <button type="button" onclick='fechar(this)' class=" endButton">Fechar</button>
+        <button onclick="pesquisa()" class="transferButton">Pesquisar</button>
     </form>
 
 
