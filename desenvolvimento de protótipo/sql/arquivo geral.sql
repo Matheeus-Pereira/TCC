@@ -12,7 +12,7 @@ primary key(id)
 
 create table produtos(
 id int not null,
-nome varchar(250) not null,
+nome varchar(250),
 descricao text,
 quantidade double not null,
 id_estoque int default null,
@@ -30,5 +30,19 @@ insert into produtos(id, nome, quantidade, id_estoque)
 values
 (03110462, 'chave de fenda', 2, 1),
 (04120532, 'chaveta 12', 2, 1);
+/*fazer as movimentações via sql e depois passar para js*/
 
-select * from  produtos;
+/*retira um item da tabela depois confere */
+update produtos set quantidade = quantidade-1 where id = 03110462 and id_estoque=1;
+select quantidade,id,  id_estoque from produtos;
+/*retira um item da tabela depois confere*/
+
+/*add um item a tabela*/
+update produtos set quantidade = quantidade+1 where id = 03110462 and id_estoque=1;
+select quantidade,id,  id_estoque from produtos;
+/*add um item a tabela*/
+
+select * from estoques;
+select * from produtos;
+
+select * from  produtos where id= 03110462;

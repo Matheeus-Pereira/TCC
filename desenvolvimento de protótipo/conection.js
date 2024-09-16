@@ -29,58 +29,35 @@ function searchEstoque() {
         })
     });
 }
-
-function transfItem(idA, origem, destino, quant) {
-
-    const sqlorigem = `select quantidade from produtos where id=${idA} and id_estoque=${origem}`;
-
-    connection.query(sqlorigem, (err, results) => {
+function retiraItem(nm, qt, estoque) {
+    const sql = `update produtos set quantidade = quantidade-${qt} where id = '${nm}' and id_estoque=${estoque};`;
+    connection.query(sql, (err, result) => {
         if (err) {
-            console.log('erro ao encontrar produto', err);
+            console.log('erro ao movem o item do armazem ', estoque);
             return;
         }
-        if (results.length === 0 || results[0].quantidade < quant) {
-            console.log('Não existe saldo suficiente do item ', idA);
-            return;
-        }
+        console.log(result);
     })
-    const sqltransf = `update produtos set quantidade = quantidade-${quant} where id=${idA} and id_estoque=${origem}`;
-
-    connection.query(sqltransf, (err, results) => {
+}
+function addItem(nm, qt, estoque) {
+    const sql = `update produtos set quantidade = quantidade+${qt} where id = '${nm}' and id_estoque=${estoque};`;
+    connection.query(sql, (err, result) => {
         if (err) {
-            console.log("erro ao transferir:", err);
+            console.log('erro ao movem o item do armazem ', estoque);
             return;
         }
-        const sqlVerificaDestino = `SELECT quantidade FROM produtos WHERE id= ${idA} AND id_estoque= ${destino}`;
-        connection.query(sqlVerificaDestino, (err, results) => {
-            if (err) {
-                console.log('Erro ao verificar o estoque de destino:', err);
-                return;
-            }
-            if (results.length === 0) {
-                const insereDestino = `insert into produtos (id, id_estoque, quantidade)
-                values ('${idA}', ${destino}, ${quant})`;
-                connection.query(insereDestino, (err, results) => {
-                    if (err) {
-                        console.log("erro ao inserir item");
-                        return;
-                    }
-                    console.log('item ', idA, ' transferido');
-                })
-            } else {
-                // Se o item já existe no destino, atualiza a quantidade
-                const sqlAdicionaDestino = `UPDATE produtos SET quantidade = quantidade + ${quant} WHERE id='${idA}' AND id_estoque=${destino}`;
-                connection.query(sqlAdicionaDestino, (err, results) => {
-                    if (err) {
-                        console.log('Erro ao adicionar quantidade ao estoque de destino:', err);
-                        return;
-                    }
-                    console.log('Item transferido com sucesso para o estoque de destino!');
-                });
-            }
-        });
+        console.log(result);
     })
+
 }
 
 
-transfItem('03110462',1, 10, 1);
+function transfItem(idA, origem, destino, quant) {
+
+  
+}
+
+
+
+retiraItem('03110462', 1, 1);
+addItem('03110462', 5, 1);
