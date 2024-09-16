@@ -32,5 +32,3 @@ function createTabela(nometb ) {
         console.log('Produto inserido com sucesso, ID:', results.insertId);
     });
 }
-
-createTabela('produtos');
