@@ -46,7 +46,7 @@ function addItem(nm, qt, estoque) {
             console.log('erro ao movem o item do armazem ', estoque);
             return;
         }
-       
+
 
         console.log(result);
     })
@@ -61,15 +61,18 @@ function confereItem(estoque, id) {
             return;
         }
         const quant = result[0].quantidade
-        console.log(quant);
+        return quant;
     })
 }
 
 function transfItem(idA, origem, destino, quant) {
-
+    if (confereItem(origem, idA) === 0) {
+        console.log('O saldo do item está zerado')
+    } else if (confereItem(origem, idA) < quant) {
+        console.log('o saldo é menor que a quantidade transferida');
+    }
 
 }
 
 
-
-confereItem(1, '03110462');
+// transferir item 03110462 do deposito 1 para o 10
