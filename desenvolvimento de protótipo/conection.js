@@ -46,18 +46,30 @@ function addItem(nm, qt, estoque) {
             console.log('erro ao movem o item do armazem ', estoque);
             return;
         }
+       
+
         console.log(result);
     })
 
 }
 
+function confereItem(estoque, id) {
+    const sql = `select quantidade from produtos where id_estoque=${estoque} and id='${id}';`;
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log("erro ao pesquisar item");
+            return;
+        }
+        const quant = result[0].quantidade
+        console.log(quant);
+    })
+}
 
 function transfItem(idA, origem, destino, quant) {
 
-  
+
 }
 
 
 
-retiraItem('03110462', 1, 1);
-addItem('03110462', 5, 1);
+confereItem(1, '03110462');

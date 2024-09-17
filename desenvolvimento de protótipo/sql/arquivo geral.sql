@@ -42,6 +42,9 @@ update produtos set quantidade = quantidade+1 where id = 03110462 and id_estoque
 select quantidade,id,  id_estoque from produtos;
 /*add um item a tabela*/
 
+/*pesquisar o item*/
+select quantidade from produtos where id_estoque=1 and id=03110462;
+/*pesquisar o item*/
 select * from estoques;
 select * from produtos;
 
