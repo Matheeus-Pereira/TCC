@@ -64,43 +64,22 @@ function confereItem(estoque, id) {
         return quant;
     })
 }
-function nomeItem(id, callback) {
-    const sql = `SELECT nome FROM produtos WHERE id=${id}`;
+
+function criaItem(nmr, ida, idb, qtd) {
+    // Obtem o nome do item antes de tentar criar
+
+
+    const sql = `INSERT INTO itensEstoque(nmr, id_estoque, id_prosduto, quantidade)
+                     VALUES (${nmr}, '${ida}', ${idb}, ${qtd});`;
+
     connection.query(sql, (err, result) => {
         if (err) {
-            console.log("Erro ao pesquisar item:", err);
-            callback(err, null);
+            console.log('Erro ao registrar item:', err);
             return;
         }
-        if (result.length > 0) {
-            const nome = result[0].nome;
-            callback(null, nome);
-        } else {
-            callback(null, null); // Nenhum item encontrado
-        }
+        console.log('Item criado com sucesso!');
     });
-}
 
-function criaItem(id, quantidade, idEstoque) {
-    // Obtem o nome do item antes de tentar criar
-    nomeItem(id, (err, nome) => {
-        if (err || !nome) {
-            console.log('Erro ao obter o nome do item ou item não encontrado.');
-            return;
-        }
-
-        const sql = `INSERT INTO produtos(id, nome, quantidade, id_estoque)
-                     VALUES (${id}, '${nome}', ${quantidade}, ${idEstoque})
-                     ON DUPLICATE KEY UPDATE id = ${id};`;
-
-        connection.query(sql, (err, result) => {
-            if (err) {
-                console.log('Erro ao registrar item:', err);
-                return;
-            }
-            console.log('Item criado com sucesso!');
-        });
-    });
 }
 
 
@@ -118,5 +97,20 @@ function transfItem(idA, origem, destino, quant) {
 
 }
 
-criaItem('03110462', 1, 2);
+// criaItem('03110462', 1, 2);
 // transferir item 03110462 do deposito 1 para o 10
+
+function sqlteste() {
+    const sql = `insert into itensEstoque(id_estoque, id_produto)
+values 
+(10, 1);`;
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        console.log(result);
+    });
+}
+
+sqlteste()
