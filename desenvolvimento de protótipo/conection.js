@@ -40,7 +40,7 @@ function retiraItem(nm, qt, estoque) {
     })
 }
 function addItem(nm, qt, estoque) {
-    const sql = `update produtos set quantidade = quantidade+${qt} where id = '${nm}' and id_estoque=${estoque};`;
+    const sql = `update itensEstoque set quantidade = quantidade+${qt} where nmr=${nm} and id_estoque=${estoque};`;
     connection.query(sql, (err, result) => {
         if (err) {
             console.log('erro ao movem o item do armazem ', estoque);

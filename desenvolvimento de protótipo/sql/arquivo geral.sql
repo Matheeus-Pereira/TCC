@@ -25,7 +25,7 @@ foreign key (id_estoque) references estoques(id)
 create table itensEstoque(
 id int auto_increment not null,
 nmr int,
-descrcao varchar(250) default "",
+descricao varchar(250) default "",
 quantidade int default 0,
 id_estoque int default null,
 id_produto int default null,
@@ -45,16 +45,16 @@ values
 (03110462, 'chave de fenda', 1),
 (04120532, 'chaveta 12', 1);
 
-insert into itensEstoque(nmr,id_estoque, id_produto, quantidade)
+insert into itensEstoque(nmr,id_estoque, id_produto)
 values 
-(03110462,1, 1,0),
-(04120532,2, 2,0);
+(03110462,1, 1),
+(04120532,2, 2);
 /*fazer as movimentações via sql e depois passar para js*/
 
 -- criar item durante movimentação
-insert into itensEstoque(nmr,id_estoque, id_produto, quantidade)
+insert into itensEstoque(nmr,id_estoque, id_produto)
 values 
-(03110462,2, 1);
+(03110462,1,2);
 
 
 select * from itensEstoque;
@@ -70,8 +70,8 @@ select * from itensEstoque;
 
 /*add um item a tabela*/
 
-update itensEstoque set quantidade = quantidade+1 where nmr=03110462 and id_estoque=1;
-
+update itensEstoque set quantidade = quantidade+1 where nmr=03110462 and id_estoque=2;
+select * from itensEstoque;
 /*add um item a tabela*/
 
 /*pesquisar o item*/
