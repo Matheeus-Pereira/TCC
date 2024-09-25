@@ -69,7 +69,6 @@ select * from itensEstoque;
 /*retira um item da tabela depois confere*/
 
 /*add um item a tabela*/
-
 update itensEstoque set quantidade = quantidade+1 where nmr=03110462 and id_estoque=2;
 select * from itensEstoque;
 /*add um item a tabela*/
