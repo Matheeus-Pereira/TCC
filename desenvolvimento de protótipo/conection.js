@@ -25,7 +25,7 @@ function searchEstoque() {
             return;
         }
         results.forEach(estoque => {
-            console.log(`ID:${estoque.id}, nome:${estoque.nome}, descrição:${estoque.descricao}`);
+            console.log(`ID:${estoque.id}, codigo:${estoque.codigo}, descrição:${estoque.descricao}`);
         })
     });
 }//essa função deve ser ajustada
@@ -53,24 +53,47 @@ function addItem(nm, qt, estoque) {
 
 }
 
+function idEstoque(id) {
+    const sql = `select id_produto from itensEstoque where nmr=${id}`
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('erro', err)
+            return
+        }
+        let nm
+        result.forEach(identificacao => {
+            nm = identificacao;
+        })
+
+        return identificacao;
+    })
+
+
+}
+
 function confereItem(estoque, id) {
-    const sql = `select quantidade from produtos where id_estoque=${estoque} and id=${id};`;
+    const sql = `select quantidade from itensEstoque where id_estoque=${estoque} and id=${idEstoque(id)};`;
     connection.query(sql, (err, result) => {
         if (err) {
             console.log("erro ao pesquisar item", err);
             return;
         }
-        const quant = result[0].quantidade
+        let quant
+        result.forEach(quantidade => {
+            quant = quantidade
+        })
+
+
+        console.log('quantidade pesquisada', quant)
         return quant;
     })
 }
 
-function criaItem(nmr, ida, idb, qtd) {
-    // Obtem o nome do item antes de tentar criar
+function criaItem(nmr, ida, qtd) {
 
 
-    const sql = `INSERT INTO itensEstoque(nmr, id_estoque, id_prosduto, quantidade)
-                     VALUES (${nmr}, '${ida}', ${idb}, ${qtd});`;
+    const sql = `INSERT INTO itensEstoque(nmr, id_estoque, quantidade)
+                     VALUES (${nmr}, '${ida}',  ${qtd});`;
 
     connection.query(sql, (err, result) => {
         if (err) {
@@ -85,17 +108,25 @@ function criaItem(nmr, ida, idb, qtd) {
 
 
 function transfItem(idA, origem, destino, quant) {
-    if (confereItem(origem, idA) === 0) {
-        console.log('O saldo do item está zerado')
+    if (confereItem(origem, idA) == 0) {
+        console.log('O saldo do item ', idA, ' está zerado')
         return;
     } else if (confereItem(origem, idA) < quant) {
-        console.log('o saldo é menor que a quantidade transferida');
+        console.log('o saldo do item ', idA, ' é menor que a quantidade transferida');
         return;
-    } else if (confereItem(destino, idA) === null) {
-        criaitem(idA, quant, destino);
+    } else if (confereItem(destino, idA) == null) {
+        retiraItem(idA, quant, origem)
+        criaItem(idA, destino, quant);
+    } else {
+
+        addItem(idA, quant, destino)
+        retiraItem(idA, quant, origem)
+        console.log('deu certo')
     }
 
 }
+
+transfItem('03110462', 1, 2, 2)
 
 // criaItem('03110462', 1, 2);
 // transferir item 03110462 do deposito 1 para o 10
@@ -113,4 +144,3 @@ values
     });
 }
 
-sqlteste()
