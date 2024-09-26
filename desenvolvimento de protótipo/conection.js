@@ -54,7 +54,7 @@ function addItem(nm, qt, estoque) {
 }
 
 function idEstoque(id) {
-    const sql = `select id_produto from itensEstoque where nmr=${id}`
+    const sql = `select id_estoque from itensEstoque where nmr=${id}`
     connection.query(sql, (err, result) => {
         if (err) {
             console.log('erro', err)
@@ -64,15 +64,31 @@ function idEstoque(id) {
         result.forEach(identificacao => {
             nm = identificacao;
         })
-
-        return identificacao;
-    })
+        console.log('id do estoque ',nm)
+        return nm;
+    })//verificar
 
 
 }
+function idProduto(nmr) {
+    sql = `select id from produtos where id = (select id_produto from itensEstoque where nmr=${nmr});`;
+    connection.query(sql, (err, result) => {
+        if (err) {
+            console.log('erro', err)
+            return
+        }
+        let nm
+        result.forEach(identificacao => {
+            nm = identificacao;
+        })
+        console.log('id do produto ',nm)
+        return nm;
+    })//verificar
+}
+
 
 function confereItem(estoque, id) {
-    const sql = `select quantidade from itensEstoque where id_estoque=${estoque} and id=${idEstoque(id)};`;
+    const sql = `select quantidade from itensEstoque where id_estoque=${idEstoque(estoque)} and id_produto=${idProduto(id)};`;//erros aqui
     connection.query(sql, (err, result) => {
         if (err) {
             console.log("erro ao pesquisar item", err);

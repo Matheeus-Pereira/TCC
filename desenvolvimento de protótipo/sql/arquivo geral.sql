@@ -17,18 +17,17 @@ id int  auto_increment not null,
 codigo int not null,
 nome varchar(250),
 descricao text,
-id_estoque int default null,
-primary key (id),
-foreign key (id_estoque) references estoques(id)
+id_estoque int default 1,
+primary key (id)
 );
 
 create table itensEstoque(
 id int auto_increment not null,
-nmr int,
+nmr int default 0,
 descricao varchar(250) default "",
 quantidade int default 0,
-id_estoque int default null,
-id_produto int default null,
+id_estoque int not null,
+id_produto int not null,
 primary key(id),
 foreign key (id_estoque) references estoques(id),
 foreign key (id_produto) references produtos(id)
@@ -40,10 +39,10 @@ values
 (1, 'deposito geral'),
 (10, 'expedição');
 
-insert into produtos(codigo, nome, id_estoque)
+insert into produtos(codigo, nome)
 values
-(03110462, 'chave de fenda', 1),
-(04120532, 'chaveta 12', 1);
+(03110462, 'chave de fenda'),
+(04120532, 'chaveta 12');
 
 insert into itensEstoque(nmr,id_estoque, id_produto)
 values 
@@ -55,9 +54,6 @@ values
 insert into itensEstoque(nmr,id_estoque, id_produto)
 values 
 (03110462,1,2);
-
-
-select * from itensEstoque;
 -- criar item durante movimentação
 
 
@@ -72,14 +68,16 @@ select * from itensEstoque;
 update itensEstoque set quantidade = quantidade+10 where nmr=03110462 and id_estoque=1;
 select * from itensEstoque;
 /*add um item a tabela*/
-select quantidade from itensestoque where id_estoque=2 and nmr=03110462;
+
 
 /*pesquisar o item*/
 select quantidade from itensestoque where id_estoque=1 and nmr=03110462;
 /*pesquisar o item*/
 
 select * from estoques;
-select * from produtos;
+select id from produtos where id = (select id_produto from itensEstoque where nmr=03110462);
 select * from itensEstoque;
+
+select id_estoque from itensEstoque where nmr=03110462;
 
 select * from  produtos where id= 03110462;
