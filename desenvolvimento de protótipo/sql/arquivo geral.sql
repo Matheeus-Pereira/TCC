@@ -48,6 +48,8 @@ insert into itensEstoque(nmr,id_estoque, id_produto)
 values 
 (03110462,1, 1),
 (04120532,2, 2);
+
+
 /*fazer as movimentações via sql e depois passar para js*/
 
 -- criar item durante movimentação
@@ -59,7 +61,7 @@ values
 
 /*retira um item da tabela depois confere */
 
-update itensEstoque set quantidade=quantidade-1 where nmr=03110462 and id_estoque=1;
+update itensEstoque set quantidade=10 where nmr=03110462 and id_estoque=2;
 select * from itensEstoque;
 
 /*retira um item da tabela depois confere*/
@@ -81,3 +83,6 @@ select * from itensEstoque;
 select id_estoque from itensEstoque where nmr=03110462;
 
 select * from  produtos where id= 03110462;
+
+
+-- simular o processo em sql e o repetir mem js
