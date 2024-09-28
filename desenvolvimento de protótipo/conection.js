@@ -81,7 +81,7 @@ async function addItem(nm, qt) {
 }
 
 
-function idEstoque(numero) {
+async function idEstoque(numero) {
     return new Promise((resolve, reject) => {
         const sql = `select id from estoques where codigo=${numero};`;
         connection.query(sql, (err, result) => {
@@ -89,14 +89,14 @@ function idEstoque(numero) {
                 reject(err);
                 return;
             }
-            const idEstoque = result[0]?.id_estoque || null;
+            const idEstoque = result[0]?.id || null;
             resolve(idEstoque);
         });
     });
 }//função zoada
 
 
-function idProduto(nmr) {
+async function idProduto(nmr) {
     return new Promise((resolve, reject) => {
         const sql = `select id from produtos where id = (select id_produto from itensEstoque where nmr=${nmr});`;
         connection.query(sql, (err, result) => {
@@ -113,10 +113,10 @@ function idProduto(nmr) {
 }
 
 
-async function confereItem(id) {
+async function confereItem(nmr) {
     try {
-        const idEst = await idEstoque(id);
-        const idProd = await idProduto(id);
+        const idEst = await idEstoque(nmr);
+        const idProd = await idProduto(nmr);
         const sql = `select quantidade from itensEstoque where id_estoque=${idEst} and id_produto=${idProd};`;
 
         connection.query(sql, (err, result) => {
@@ -136,7 +136,7 @@ async function confereItem(id) {
 async function criaItem(numero, id_estoque, id_produto) {
 
     const idE = await idEstoque(id_estoque);
-    const idP =  await idProduto(id_produto);
+    const idP = await idProduto(id_produto);
 
     const sql = `INSERT INTO itensEstoque(nmr, id_estoque, id_produto)
                      VALUES (${numero}, '${idE}',  ${idP});`;
@@ -153,24 +153,31 @@ async function criaItem(numero, id_estoque, id_produto) {
 
 
 
-function transfItem(idA, origem, destino, quant) {
-    if (confereItem(origem, idA) == 0) {
-        console.log('O saldo do item ', idA, ' está zerado')
-        return;
-    } else if (confereItem(idA) < quant) {
-        console.log('o saldo do item ', idA, ' é menor que a quantidade transferida');
-        return;
-    } else if (confereItem(destino, idA) == null) {
-        retiraItem(idA, quant, origem)
-        criaItem(idA);
-        addItem(idA, quant)
-    } else {
+async function transfItem(idA, origem, destino, quant) {
+    try {
+        const saldoOrigem = await confereItem(idA); // Espera o saldo do estoque de origem
+        if (saldoOrigem === 0) {
+            console.log('O saldo do item ', idA, ' está zerado');
+            return;
+        } else if (saldoOrigem < quant) {
+            console.log('O saldo do item ', idA, ' é menor que a quantidade transferida');
+            return;
+        }
 
-        addItem(idA, quant, destino)
-        retiraItem(idA, quant, origem)
-        console.log('deu certo')
+        const saldoDestino = await confereItem(destino, idA); // Verifica o saldo no destino
+        if (saldoDestino == null) { // Se o item não existe no destino
+            await retiraItem(idA, quant, origem); // Retira do estoque de origem
+            await criaItem(idA, destino); // Cria o item no estoque destino
+            await addItem(idA, quant, destino); // Adiciona a quantidade no estoque destino
+        } else {
+            await addItem(idA, quant, destino); // Se já existe, só adiciona a quantidade
+            await retiraItem(idA, quant, origem); // E retira do estoque de origem
+        }
+
+        console.log('Produto ', idA, ' transferido do estoque ', origem, ' para o estoque ', destino, ' com sucesso\nQuantidade transferida:', quant);
+    } catch (error) {
+        console.log('Erro ao transferir item:', error);
     }
-    console.log('produto ', idA, ' transferido do estoque ', origem, ' para o estoque ', destino, ' com sucesso\nQuantidade transferida:', quant)
 }
 
 transfItem('03110462', 1, 2, 2)
