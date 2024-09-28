@@ -32,6 +32,7 @@ primary key(id),
 foreign key (id_estoque) references estoques(id),
 foreign key (id_produto) references produtos(id)
 );
+-- necessário rever lógica de tabelas, é necessário ter a id do estoque no produto?
 
 insert into estoques(codigo, nome)
 values
@@ -52,14 +53,12 @@ values
 
 /*fazer as movimentações via sql e depois passar para js*/
 
--- criar item durante movimentação
-insert into itensEstoque(nmr,id_estoque, id_produto)
-values 
-(03110462,1,2);
--- criar item durante movimentação
 
+-- abastecendo estoques
+update itensEstoque set quantidade=10 where nmr=03110462 and in_estoque=1;
+update itensEstoque set quantidade=10 where nmr=04120532 and in_estoque=1;
 
-/*retira um item da tabela depois confere */
+/* retira item */
 
 update itensEstoque set quantidade=10 where nmr=03110462 and id_estoque=2;
 select * from itensEstoque;
@@ -72,17 +71,29 @@ select * from itensEstoque;
 /*add um item a tabela*/
 
 
-/*pesquisar o item*/
+/*pesquisar quantidade em estoque*/
+
 select quantidade from itensestoque where id_estoque=1 and nmr=03110462;
-/*pesquisar o item*/
+
+/*pesquisar quantidade em estoque*/
+
+-- id do estoque a partir do codigo
+select id from estoques where codigo=1;
+-- id do estoque a partir do codigo
+
+-- id do produto
+select id from produtos ;
+-- id do produto
+-- criar item durante movimentação
+insert into itensEstoque(nmr,id_estoque, id_produto)
+values (03110462,2,1);
+select*from itensEstoque where id_produto=1;
+-- criar item durante movimentação
 
 select * from estoques;
 select id from produtos where id = (select id_produto from itensEstoque where nmr=03110462);
 select * from itensEstoque;
 
-select id_estoque from itensEstoque where nmr=03110462;
-
-select * from  produtos where id= 03110462;
 
 
 -- simular o processo em sql e o repetir mem js
