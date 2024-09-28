@@ -81,9 +81,9 @@ async function addItem(nm, qt) {
 }
 
 
-function idEstoque(id) {
+function idEstoque(numero) {
     return new Promise((resolve, reject) => {
-        const sql = `select id_estoque from itensEstoque where nmr=${id};`;
+        const sql = `select id from estoques where codigo=${numero};`;
         connection.query(sql, (err, result) => {
             if (err) {
                 reject(err);
@@ -93,7 +93,9 @@ function idEstoque(id) {
             resolve(idEstoque);
         });
     });
-}
+}//função zoada
+
+
 function idProduto(nmr) {
     return new Promise((resolve, reject) => {
         const sql = `select id from produtos where id = (select id_produto from itensEstoque where nmr=${nmr});`;
@@ -131,11 +133,13 @@ async function confereItem(id) {
     }
 }
 
-function criaItem(nmr, ida, idb) {
+async function criaItem(numero, id_estoque, id_produto) {
 
+    const idE = await idEstoque(id_estoque);
+    const idP =  await idProduto(id_produto);
 
     const sql = `INSERT INTO itensEstoque(nmr, id_estoque, id_produto)
-                     VALUES (${nmr}, '${ida}',  ${idb});`;
+                     VALUES (${numero}, '${idE}',  ${idP});`;
 
     connection.query(sql, (err, result) => {
         if (err) {
@@ -158,7 +162,8 @@ function transfItem(idA, origem, destino, quant) {
         return;
     } else if (confereItem(destino, idA) == null) {
         retiraItem(idA, quant, origem)
-        criaItem(idA, idEstoque(idA), idProduto(idA));
+        criaItem(idA);
+        addItem(idA, quant)
     } else {
 
         addItem(idA, quant, destino)
