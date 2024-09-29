@@ -47,7 +47,7 @@
         </form>
     </footer>
 
-    <form action="" id="transferencia" class="transf1">
+    <form id="transferencia" class="transf1">
 
         <table>
             <tr>
@@ -55,7 +55,7 @@
                     <h3>codigo do item:</h3>
                 </td>
                 <td>
-                    <input type="text" name="" id="">
+                    <input type="text" name="" id="cditem">
                 </td>
             </tr>
             <tr>
@@ -63,7 +63,7 @@
                     <h3>quantidade transferida:</h3>
                 </td>
                 <td>
-                    <input type="text" name="" id="">
+                    <input type="text" name="" id="qtditem">
                 </td>
             </tr>
         </table>
@@ -72,7 +72,7 @@
                 <td>
                     <h3>deposito de origem:</h3>
                 </td>
-                <td> <input type="text"></td>
+                <td> <input type="text" id="dporigem"></td>
                 </td>
             </tr>
 
@@ -80,17 +80,17 @@
                 <td>
                     <h3>deposito de destino:</h3>
                 </td>
-                <td> <input type="text"></td>
+                <td> <input type="text" id="dpdestino"></td>
             </tr>
         </table>
 
         <button type="button" onclick='fechar(this)' class="endButton">sair</button>
-        <button class="transferButton" id="transferButton">Transferir</button>
+        <button class="transferButton" id="transferButton" onclick="transfere()">Transferir</button>
     </form>
 
 
 
-    <form action="" class="transfmobile" id="face">
+    <form class="transfmobile" id="face">
         <h3>aponte a camera para o codigo de barras</h3>
         <video autoplay playsinline class="transfmobile"></video>
         <canvas id="codereader"></canvas>
@@ -138,7 +138,7 @@
             </tr>
         </table>
         <button type="button" onclick='fechar(this)' class=" endButton">Fechar</button>
-        <button onclick="pesquisa()" class="transferButton">Pesquisar</button>
+        <button onclick="pesquisa()" id="transferButon" class="transferButton">Pesquisar</button>
     </form>
 
     <form action="" id="armobile" class="editmobile">

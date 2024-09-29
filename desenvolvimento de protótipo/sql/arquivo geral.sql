@@ -17,7 +17,6 @@ id int  auto_increment not null,
 codigo int not null,
 nome varchar(250),
 descricao text,
-id_estoque int default 1,
 primary key (id)
 );
 
@@ -57,9 +56,9 @@ values
 -- abastecendo estoques
 update itensEstoque set quantidade=10 where nmr=03110462 and in_estoque=1;
 update itensEstoque set quantidade=10 where nmr=04120532 and in_estoque=1;
+-- para verificar em que estoque o produto está devo pesquisar pela tabela itens estoque
 
-/* retira item */
-
+ -- retira item 
 update itensEstoque set quantidade=10 where nmr=03110462 and id_estoque=2;
 select * from itensEstoque;
 
@@ -95,5 +94,5 @@ select id from produtos where id = (select id_produto from itensEstoque where nm
 select * from itensEstoque;
 
 
-
+select id from produtos where id = (select id_produto from itensEstoque where nmr=03110462);
 -- simular o processo em sql e o repetir mem js
