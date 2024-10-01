@@ -176,3 +176,33 @@ function readBarcode(code) {
             }
         });
 }
+
+
+
+//---------------------------ACESSANDO ENDPOIT----------------------
+
+try {
+    const response = await fetch('http://localhost:3000/transferir-item', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: 1, // Substitua com o ID correto do item
+            origem: 'Estoque A', // Substitua pela origem correta
+            destino: 'Estoque B', // Substitua pelo destino correto
+            quantidade: 10 // Substitua pela quantidade correta
+        })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+        throw new Error(result.error || 'Erro ao fazer login');
+    }
+
+    alert('Login bem-sucedido!');
+    window.location.href = "principal.html";
+} catch (error) {
+    alert(error.message);
+}
