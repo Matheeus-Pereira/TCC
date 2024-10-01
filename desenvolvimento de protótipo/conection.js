@@ -1,11 +1,13 @@
 const mysql = require('mysql2');
-
+const app = express();
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'admin',
     database: 'prototipo'
 })
+
+app.use(express.json());
 
 connection.connect(err => {
     if (err) {
@@ -210,3 +212,31 @@ values
     });
 }
 
+
+
+
+// -------------------------  ENDPOINTS -------------------------
+
+app.post('/transferir-item', (req, res) => {
+    const { id, origem, destino, quantidade } = req.body;
+
+    transfItem(id, origem, destino, quantidade)
+        .then(() => {
+            res.json({ sucess: true, message: 'intem transferido com sucesso!' })
+        })
+        .catch(err => {
+            console.error('erro na transferencia:', err);
+            res.json({ sucess: false, error: err.message });
+        })
+})
+
+
+
+
+
+
+// -------------------------  INICIA SERVIDOR -------------------------
+
+app.listen(3000, () => {
+    console.log('servidor rodando,porta 3000')
+})

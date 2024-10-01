@@ -97,7 +97,7 @@ icone.addEventListener('click', () => {
         console.log("teste03")
     } if (uso == true) {
         menu.style.left = '-42vh';
-        alerta("não é possivel trocar de função sem fechar a função atual");
+        alert("não é possivel trocar de função sem fechar a função atual");
         console.log("devia fazer o alerta")
     }
 
@@ -114,10 +114,6 @@ editEestoque.addEventListener('click', () => {
         uso = true;
     }
 })
-
-function alerta(x) {
-    alert(x);
-}
 
 function pxTovh(numpx) {
 
@@ -141,14 +137,6 @@ function transfere() {
 }
 function editarmz() {
 
-}
-
-
-function errorMsg(msg, error) {
-    errorElement.innerHTML += "<p>" + msg + "</p>";
-    if (typeof error !== "undefined") {
-        console.error(error);
-    }
 }
 
 function Photo() {
@@ -184,7 +172,7 @@ function readBarcode(code) {
                 teset.innerHTML = `<p>${result.codeResult.code}</p>`;
 
             } else {
-                alerta("impossivel ler codigo de barras")
+                alert("impossivel ler codigo de barras")
             }
         });
 }
