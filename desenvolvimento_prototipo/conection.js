@@ -1,4 +1,5 @@
 const mysql = require('mysql2');
+const express = require('express');
 const app = express();
 const connection = mysql.createConnection({
     host: 'localhost',
@@ -8,6 +9,10 @@ const connection = mysql.createConnection({
 })
 
 app.use(express.json());
+
+app.get('/', (req, res)=>res.json({
+    message:'funcionando'
+}))
 
 connection.connect(err => {
     if (err) {
@@ -110,7 +115,7 @@ function idProduto(nmr) {
         console.log('L108', result)
         let valor = result[0].id
 
-        console.log(valor)
+        console.log('test', valor)
         return valor;
 
     });
@@ -118,7 +123,7 @@ function idProduto(nmr) {
 }
 
 console.log('L118', idProduto('03110462'));
-
+console.log('-\n id do produto ', idProduto('03110462') )
 async function confereItem(nmr) {
     try {
         const idEst = 0
