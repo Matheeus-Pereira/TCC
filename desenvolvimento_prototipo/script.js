@@ -6,7 +6,7 @@ const mobilemenu = document.getElementById('mobilemenu')
 const transferir = document.getElementById('func1');
 const editEestoque = document.getElementById('func2');
 var canvas = document.getElementById('codereader');
-
+const ftm = document.getElementById('tmend')
 let uso = false;
 
 var video = document.querySelector('video');
@@ -61,15 +61,18 @@ function mobileTransf() {
         startcamera();
     }
 }
+
+
 function mobilearmz() {
     const armobile = document.getElementById('armobile');
     const dispmobile = window.getComputedStyle(armobile).display;
     if (dispmobile == 'none') {
         armobile.style.display = 'flex'
         mobilemenu.style.display = 'none'
-
+       
     }
 }
+
 
 
 transferir.addEventListener('click', () => {
@@ -130,6 +133,8 @@ function fechar(button) {
         form.style.display = 'none';
         uso = false;
     }
+ location.reload()
+    
 }
 
 async function transfere() {
@@ -147,17 +152,17 @@ async function transfere() {
                 quantidade: 10 // Substitua pela quantidade correta
             })
         });
-    
+
         const result = await response.json();
-    
+
         if (!response.ok) {
             throw new Error(result.error || 'Erro ao fazer login');
         }
-    
+
         alert('Login bem-sucedido!');
         window.location.href = "principal.html";
     } catch (error) {
-        alert(error.message); 
+        alert(error.message);
     }
 
 }
@@ -234,5 +239,5 @@ function readBarcode(code) {
 //     alert('Login bem-sucedido!');
 //     window.location.href = "principal.html";
 // } catch (error) {
-//     alert(error.message); 
+//     alert(error.message);
 // }
