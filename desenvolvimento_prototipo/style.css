@@ -227,7 +227,9 @@ canvas {
         background-size: cover;
     }
 
-
+#mobTransf2{
+    display: none;
+}
 
     header {
 
@@ -252,6 +254,14 @@ canvas {
         width: 70vw;
         height: 55vh;
         margin: 4px;
+    }
+
+    .transfmobile table{
+
+
+        background-color: #fdfdfd;
+        border-radius: 2vh;
+        box-shadow: rgba(22, 22, 94, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     }
 
     h3 {

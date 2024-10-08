@@ -21,6 +21,7 @@
     <header>
         <img src="img/imgcabecalho.png" alt="cabeçalho">
     </header>
+    <!-- ---------------BARRA LATERAL------------------ -->
 
     <nav id="menu">
         <h1>titulo</h1>
@@ -40,16 +41,7 @@
 
     </nav>
 
-    <footer class="menu" id="mobilemenu">
-        <form action="" id="funcionalidades" class="func">
-
-            <h2 id="func1" onclick="mobileTransf()">Transferencias</h2>
-
-
-            <h2 id="func2" onclick="mobilearmz()">Editar armazens</h2>
-        </form>
-    </footer>
-
+    <!-- ---------------BARRA LATERAL------------------ -->
     <form id="transferencia" class="transf1">
 
         <table>
@@ -92,16 +84,33 @@
     </form>
 
 
+    <footer class="menu" id="mobilemenu">
+        <form action="" id="funcionalidades" class="func">
+
+            <h2 id="func1" onclick="mobileTransf()">Transferencias</h2>
+
+
+            <h2 id="func2" onclick="mobilearmz()">Editar armazens</h2>
+        </form>
+    </footer>
 
     <form class="transfmobile" id="face">
-        <h3>aponte a camera para o codigo de barras</h3>
-        <video autoplay playsinline class="transfmobile"></video>
-        <canvas id="codereader"></canvas>
-        <button class="endButton" onclick="fechar(this)">sair</button>
-        <button id="scan" type="button" onclick="readBarcode(Photo())">Ler codigo</button>
+        <table id="mobTransf1">
+            <tr>
+                <td>
+                    <h3>aponte a camera para o codigo de barras</h3>
 
+                    <video autoplay playsinline class="transfmobile"></video>
 
-        <table>
+                    <button class="endButton" onclick="fechar(this)">sair</button>
+                    <button id="scan" type="button" onclick="readBarcode(Photo())">Ler codigo</button>
+                </td>
+
+            </tr>
+
+        </table>
+
+        <table id="mobTransf2">
             <tr>
                 <td>
                     <h3>quantidade transferida:</h3>
@@ -110,8 +119,7 @@
                     <input type="text" name="" id="qtditem">
                 </td>
             </tr>
-        </table>
-        <table>
+
             <tr>
                 <td>
                     <h3>deposito de origem:</h3>
@@ -130,7 +138,7 @@
     </form>
 
 
-    <form action="" id="editarmazem" class="edit">
+    <form id="editarmazem" class="edit">
         <table>
             <h1>armazens existentes</h1>
             <tr>
