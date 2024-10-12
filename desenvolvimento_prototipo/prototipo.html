@@ -22,7 +22,6 @@
         <img src="img/imgcabecalho.png" alt="cabeçalho">
     </header>
     <!-- ---------------BARRA LATERAL------------------ -->
-
     <nav id="menu">
         <h1>titulo</h1>
 
@@ -40,8 +39,9 @@
         </form>
 
     </nav>
-
     <!-- ---------------BARRA LATERAL------------------ -->
+
+    <!-- ---------------TRANSFERE DESKTOP------------------ -->
     <form id="transferencia" class="transf1">
 
         <table>
@@ -82,8 +82,9 @@
         <button type="button" onclick='fechar(this)' class="endButton">sair</button>
         <button class="transferButton" id="transferButton" onclick="transfere()">Transferir</button>
     </form>
+    <!-- ---------------TRANSFERE DESKTOP------------------ -->
 
-
+    <!-- ---------------MENU MOBILE------------------ -->
     <footer class="menu" id="mobilemenu">
         <form action="" id="funcionalidades" class="func">
 
@@ -93,7 +94,9 @@
             <h2 id="func2" onclick="mobilearmz()">Editar armazens</h2>
         </form>
     </footer>
+    <!-- ---------------MENU MOBILE------------------ -->
 
+    <!-- ---------------TRANSFERE MOBILE------------------ -->
     <form class="transfmobile" id="face">
         <table id="mobTransf1">
             <tr>
@@ -101,7 +104,7 @@
                     <h3>aponte a camera para o codigo de barras</h3>
 
                     <video autoplay playsinline class="transfmobile"></video>
-
+                    <canvas id="codereader" ></canvas>
                     <button class="endButton" onclick="fechar(this)">sair</button>
                     <button id="scan" type="button" onclick="readBarcode(Photo())">Ler codigo</button>
                 </td>
@@ -136,7 +139,7 @@
             </tr>
         </table>
     </form>
-
+    <!-- ---------------TRANSFERE MOBILE------------------ -->
 
     <form id="editarmazem" class="edit">
         <table>
