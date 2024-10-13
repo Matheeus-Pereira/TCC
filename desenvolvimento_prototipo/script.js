@@ -9,6 +9,10 @@ var canvas = document.getElementById('codereader');
 const ftm = document.getElementById('tmend')
 let uso = false;
 
+let cdbarra = 0
+
+
+
 var video = document.querySelector('video');
 var stream;
 
@@ -69,7 +73,7 @@ function mobilearmz() {
     if (dispmobile == 'none') {
         armobile.style.display = 'flex'
         mobilemenu.style.display = 'none'
-       
+
     }
 }
 
@@ -133,8 +137,8 @@ function fechar(button) {
         form.style.display = 'none';
         uso = false;
     }
- location.reload()
-    
+    location.reload()
+
 }
 
 async function transfere() {
@@ -199,15 +203,23 @@ function readBarcode(code) {
         }
     },
         (result) => {
-            const teset = document.getElementById('teste');
+            const table = document.getElementById('mobTransf2');
+            const menu = document.getElementById('mobTranf1')
             if (result && result.codeResult) {
                 console.log('Código de barras lido: ', result.codeResult.code);
-                teset.innerHTML = `<p>${result.codeResult.code}</p>`;//retornar este dado para a funçaõ que transfere 
+                cdbarra = result.codeResult.code;
+                table.style.display = 'flex'
+                menu.style.display = 'none'
+
+
 
             } else {
                 alert("impossivel ler codigo de barras")
             }
         });
+
+
+
 }
 
 
