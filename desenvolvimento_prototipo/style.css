@@ -97,13 +97,16 @@ nav h1 {
     text-align: center;
     align-items: center;
 }
-.editmobile h1{
-font-size: 15pt;
+
+.editmobile h1 {
+    font-size: 15pt;
 }
-.editmobile input{
-max-width: 10vw;
-position: relative;
+
+.editmobile input {
+    max-width: 10vw;
+    position: relative;
 }
+
 .posimobile {
     border-top: solid 1px;
     border-top-left-radius: .5rem;
@@ -190,8 +193,8 @@ button {
 }
 
 form table {
-    margin-left: 2vh;
-    padding: 5vh;
+    margin-left: 2vw;
+    padding: 5vw;
 }
 
 
@@ -227,10 +230,6 @@ canvas {
         background-size: cover;
     }
 
-#mobTransf2{
-    display: none;
-}
-
     header {
 
         background: url(img/cabecalhomobile.png);
@@ -245,9 +244,16 @@ canvas {
         display: none;
     }
 
+    #mobTransf1 {
+        display: none;
+    }
+
+    #mobTransf2 {
+        display: flex;
+    }
+
     .transfmobile {
-        background-color: #fdfdfd;
-        border-radius: 2vh;
+
         display: none;
         flex-direction: column;
         align-items: center;
@@ -256,9 +262,9 @@ canvas {
         margin: 4px;
     }
 
-    .transfmobile table{
+    .transfmobile table {
 
-
+        align-self: center;
         background-color: #fdfdfd;
         border-radius: 2vh;
         box-shadow: rgba(22, 22, 94, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;

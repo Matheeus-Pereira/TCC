@@ -141,7 +141,7 @@ function fechar(button) {
 
 }
 
-async function transfere() {
+async function transfere(id, origem, destino, quantidade) {
 
     try {
         const response = await fetch('http://localhost:3000/transferir-item', {
@@ -150,21 +150,19 @@ async function transfere() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: 1, // Substitua com o ID correto do item
-                origem: 'Estoque A', // Substitua pela origem correta
-                destino: 'Estoque B', // Substitua pelo destino correto
-                quantidade: 10 // Substitua pela quantidade correta
+                id: id, // Substitua com o ID correto do item
+                origem: origem, // Substitua pela origem correta
+                destino: destino, // Substitua pelo destino correto
+                quantidade: quantidade // Substitua pela quantidade correta
             })
         });
 
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.error || 'Erro ao fazer login');
+            throw new Error(result.error || 'Erro ao transferir');
         }
-
-        alert('Login bem-sucedido!');
-        window.location.href = "principal.html";
+        alert('transferencia bem sucedida!');
     } catch (error) {
         alert(error.message);
     }
@@ -203,6 +201,7 @@ function readBarcode(code) {
         }
     },
         (result) => {
+            // provisório para o mobile 
             const table = document.getElementById('mobTransf2');
             const menu = document.getElementById('mobTranf1')
             if (result && result.codeResult) {
@@ -210,8 +209,6 @@ function readBarcode(code) {
                 cdbarra = result.codeResult.code;
                 table.style.display = 'flex'
                 menu.style.display = 'none'
-
-
 
             } else {
                 alert("impossivel ler codigo de barras")
@@ -222,7 +219,14 @@ function readBarcode(code) {
 
 }
 
+async function tranfmobile() {
 
+    const quant = document.getElementById('qtditem2').value
+    const depori = document.getElementById('dporigem2').value
+    const depdest = document.getElementById('dpdestino2').value
+    console.log(quant, depori, depdest);
+    await transfere(cdbarra, depori, depdest, quant)
+}
 
 //---------------------------ACESSANDO ENDPOIT----------------------
 
