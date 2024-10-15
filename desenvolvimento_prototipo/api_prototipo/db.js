@@ -7,4 +7,3 @@ async function selectProdutos() {
     return res[0];
 }
  
-module.exports = { selectProdutos }
