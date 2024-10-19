@@ -144,16 +144,16 @@ function fechar(button) {
 async function transfere(id, origem, destino, quantidade) {
 
     try {
-        const response = await fetch('http://localhost:3000/transferir-item', {
+        const response = await fetch('http://localhost:3000/transfere', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: id, // Substitua com o ID correto do item
-                origem: origem, // Substitua pela origem correta
-                destino: destino, // Substitua pelo destino correto
-                quantidade: quantidade // Substitua pela quantidade correta
+                id: id, 
+                origem: origem, 
+                destino: destino, 
+                quantidade: quantidade 
             })
         });
 
@@ -164,7 +164,7 @@ async function transfere(id, origem, destino, quantidade) {
         }
         alert('transferencia bem sucedida!');
     } catch (error) {
-        alert(error.message);
+        alert("erro no front", error.message);
     }
 
 }
@@ -186,15 +186,15 @@ function Photo() {
 }
 
 //devo definir quando usar essa função e quando não
-function readBarcode(code) {
+function readBarcode(Photo) {
 
-    if (!code || !code.src) {
+    if (!Photo || !Photo.src) {
         console.error("imagem não fornecida ou não carregada")
         return;
     }
 
     Quagga.decodeSingle({
-        src: code.src,
+        src: Photo.src,
         numOfWorkers: 0,
         decoder: {
             readers: ["code_128_reader", "ean_8_reader", "upc_reader"]
@@ -228,6 +228,15 @@ async function tranfmobile() {
     await transfere(cdbarra, depori, depdest, quant)
 }
 
+async function trasnfdesktop() {
+    const cditem = document.getElementById('cditem').value
+    const quant = document.getElementById('qtditem').value
+    const depori = document.getElementById('dporigem').value
+    const depdest = document.getElementById('dpdestino').value
+    console.log(quant, depori, depdest, cditem);
+    await transfere(cditem, depori, depdest, quant)
+
+}
 //---------------------------ACESSANDO ENDPOIT----------------------
 
 

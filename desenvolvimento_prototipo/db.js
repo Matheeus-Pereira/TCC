@@ -1,24 +1,11 @@
 require('dotenv').config();
 const mysql = require('mysql2/promise');
-const url = require('url');
 
 // -------------------------  CONFIGURAÇÃO DO BANCO DE DADOS -------------------------
-const connectionURL = process.env.CONNECTION_STRING;
-const params = url.parse(connectionURL);
-const [user, password] = params.auth.split(':');
 
-const connection = mysql.createPool({
-    host: params.hostname,
-    user: user,
-    password: password,
-    database: params.pathname.split('/')[1],
-    port: params.port,
-});
+const connection = mysql.createPool( process.env.CONNECTION_STRING);
 
 // -------------------------  FUNÇÕES DE CONSULTA E MANIPULAÇÃO -------------------------
-function teste() {
-    console.log(process.env.CONNECTION_STRING);
-}
 
 async function searchEstoque() {
     const sql = `SELECT * FROM estoques`;
@@ -31,6 +18,8 @@ async function searchEstoque() {
         results.forEach(estoque => {
             console.log(`ID: ${estoque.id}, Código: ${estoque.codigo}, Descrição: ${estoque.descricao}`);
         });
+        return results
+    
     } catch (err) {
         console.error('Erro ao pesquisar:', err);
     }
@@ -146,4 +135,4 @@ async function transfItem(idA, origem, destino, quant) {
 }
 
 // -------------------------  EXPORTAÇÕES -------------------------
-module.exports = { searchEstoque, transfItem, teste };
+module.exports = { searchEstoque, transfItem };

@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const express = require('express');
-const { transfItem } = require('./db.js'); // Importando apenas o que é necessário
+const { transfItem, searchEstoque } = require('./db.js'); // Importando apenas o que é necessário
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -15,15 +15,17 @@ app.get('/', (req, res) => res.json({
 }));
 
 app.post('/transfere', async (req, res) => {
-    const { idA, origem, destino, quant } = req.body;
+    const { id, origem, destino, quantidade } = req.body;
 
-    if (!idA || !origem || !destino || !quant) {
+    if (!id || !origem || !destino || !quantidade) {
         return res.status(400).json({ error: 'parâmetros inválidos' });
     }
 
     try {
-        await transfItem(idA, origem, destino, quant);
+        console.log('entrou no try')
+        await transfItem(id, origem, destino, quantidade);
         res.status(200).json({ message: 'transferência realizada com sucesso' });
+        console.log('fim fo try')
     } catch (error) {
         console.error('erro ao transferir item:', error);
         res.status(500).json({ error: 'erro ao transferir item' });
@@ -33,18 +35,17 @@ app.post('/transfere', async (req, res) => {
 app.get('/estoques', async (req, res) => {
     console.log('get chamado')
     try {
-        const sql = 'SELECT * FROM estoques';
-        const [results] = await connection.query(sql);
 
-        if (results.length === 0) {
-            return res.status(404).json({ message: 'nenhum estoque encontrado' });
-        }
+        const result = await searchEstoque();
+        res.status(200).json(result);
 
-        res.status(200).json(results);
     } catch (error) {
-        console.error('erro ao consultar estoques:', error);
-        res.status(500).json({ error: 'erro ao consultar estoques' });
+        console.error('erro ao buscar estoques', error);
+        res.status(500).json({ error: 'erro ao acessar os estoques' })
     }
+
+
+
 });
 
 // -------------------------  INICIA SERVIDOR -------------------------
