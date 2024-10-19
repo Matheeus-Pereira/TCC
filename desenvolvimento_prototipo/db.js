@@ -1,13 +1,29 @@
+require('dotenv').config();
 const mysql = require('mysql2/promise');
-const connection = mysql.createPool(process.env.CONNECTION_STRING)
+const url = require('url');
 
-function searchEstoque() {
-    const sql = `select * from estoques`;
-    connection.query(sql, (err, results) => {
-        if (err) {
-            console.error('Erro ao pesquisar:', err);
-            return;
-        }
+// -------------------------  CONFIGURAÇÃO DO BANCO DE DADOS -------------------------
+const connectionURL = process.env.CONNECTION_STRING;
+const params = url.parse(connectionURL);
+const [user, password] = params.auth.split(':');
+
+const connection = mysql.createPool({
+    host: params.hostname,
+    user: user,
+    password: password,
+    database: params.pathname.split('/')[1],
+    port: params.port,
+});
+
+// -------------------------  FUNÇÕES DE CONSULTA E MANIPULAÇÃO -------------------------
+function teste() {
+    console.log(process.env.CONNECTION_STRING);
+}
+
+async function searchEstoque() {
+    const sql = `SELECT * FROM estoques`;
+    try {
+        const [results] = await connection.query(sql);
         if (results.length === 0) {
             console.log('Nenhum estoque encontrado');
             return;
@@ -15,63 +31,44 @@ function searchEstoque() {
         results.forEach(estoque => {
             console.log(`ID: ${estoque.id}, Código: ${estoque.codigo}, Descrição: ${estoque.descricao}`);
         });
-    });
+    } catch (err) {
+        console.error('Erro ao pesquisar:', err);
+    }
 }
 
-
 async function retiraItem(nm, qt) {
-
-
     try {
         const idEst = await idEstoque(nm);
         if (!idEst) {
-            console.log('este item não tem estoque #1');
+            console.log('Este item não tem estoque #1');
             return;
         }
-        const sql = `update itensEstoque set quantidade=quantidade-${qt} where nmr=${nm} and id_estoque=${idEst}`;
-
-        connection.query(sql, (err, result) => {
-            if (err) {
-                console.log('erro ao mover item #2', err)
-                return;
-            }
-            console.log('item movido', result)
-        });
+        const sql = `UPDATE itensEstoque SET quantidade = quantidade - ${qt} WHERE nmr = ${nm} AND id_estoque = ${idEst}`;
+        await connection.query(sql);
+        console.log('Item movido');
     } catch (error) {
-        console.log('erro#3', error);
+        console.log('Erro ao mover item #2', error);
     }
-
-
-
-
 }
-
 
 async function addItem(nm, qt) {
     try {
-        const idEst = await idEstoque(nm);  // Espera a consulta ao id_estoque
+        const idEst = await idEstoque(nm);
         if (!idEst) {
             console.log('Estoque não encontrado para o item:', nm);
             return;
         }
-        const sql = `update itensEstoque set quantidade = quantidade+${qt} where nmr=${nm} and id_estoque=${idEst};`;
-        connection.query(sql, (err, result) => {
-            if (err) {
-                console.log('Erro ao mover o item do armazém', err);
-                return;
-            }
-            console.log('Item adicionado com sucesso:', result);
-        });
+        const sql = `UPDATE itensEstoque SET quantidade = quantidade + ${qt} WHERE nmr = ${nm} AND id_estoque = ${idEst}`;
+        await connection.query(sql);
+        console.log('Item adicionado com sucesso');
     } catch (error) {
         console.log('Erro ao adicionar o item:', error);
     }
 }
 
-
-
 async function idEstoque(numero) {
     return new Promise((resolve, reject) => {
-        const sql = `select id from estoques where codigo=${numero};`;
+        const sql = `SELECT id FROM estoques WHERE codigo = ${numero}`;
         connection.query(sql, (err, result) => {
             if (err) {
                 reject(err);
@@ -81,80 +78,52 @@ async function idEstoque(numero) {
             resolve(idEstoque);
         });
     });
-}//função zoada
+}
 
-
-function idProduto(nmr) {
-
-    const sql = `select id from produtos where id = (select id_produto from itensEstoque where nmr=${nmr});`;
-    connection.query(sql, (err, result) => {
-        if (err) {
-            console.log('erro', err);
-            reject(err);
-            return;
-        }
-        console.log('L108', result)
-        let valor = result[0].id
-
-        console.log('test', valor)
-        return valor;
-
+async function idProduto(nmr) {
+    return new Promise((resolve, reject) => {
+        const sql = `SELECT id FROM produtos WHERE id = (SELECT id_produto FROM itensEstoque WHERE nmr = ${nmr})`;
+        connection.query(sql, (err, result) => {
+            if (err) {
+                console.log('Erro', err);
+                reject(err);
+                return;
+            }
+            const valor = result[0]?.id || null;
+            resolve(valor);
+        });
     });
-
 }
 
 async function confereItem(nmr) {
     try {
-        const idEst = 0
+        const idEst = await idEstoque(nmr);
+        const idProd = await idProduto(nmr);
+        const sql = `SELECT quantidade FROM itensEstoque WHERE id_estoque = ${idEst} AND id_produto = ${idProd}`;
 
-        const idProdt = 0
-        await idEstoque(nmr).then((item) => { idEst = item });
-        await idProduto(nmr).then((item) => { idProdt = item });
-
-        sql = `select quantidade from itensEstoque where id_estoque=${idEst} and id_produto=${idProd};`;
-
-        connection.query(sql, (err, result) => {
-            if (err) {
-                console.log("erro ao pesquisar item", err);
-                return;
-            }
-            const quantidade = result[0]?.quantidade || 0;
-            console.log('quantidade pesquisada', quantidade);
-            return quantidade;
-        });
+        const [result] = await connection.query(sql);
+        const quantidade = result[0]?.quantidade || 0;
+        console.log('Quantidade pesquisada', quantidade);
+        return quantidade;
     } catch (error) {
         console.log('Erro ao conferir item', error);
     }
 }
 
-
 async function criaItem(numero) {
-    await idEstoque(numero).then((idE) => {
-
-        idProduto(numero).then((idP) => {
-            const sql = `INSERT INTO itensEstoque(nmr, id_estoque, id_produto)
-                     VALUES (${numero}, ${idE},  ${idP});`;
-
-            connection.query(sql, (err, result) => {
-                if (err) {
-                    console.log('Erro ao registrar item:', err);
-                    return;
-                }
-                console.log('Item criado com sucesso!');
-            });
-        });
-    });
-
-
-
-
+    try {
+        const idE = await idEstoque(numero);
+        const idP = await idProduto(numero);
+        const sql = `INSERT INTO itensEstoque (nmr, id_estoque, id_produto) VALUES (${numero}, ${idE}, ${idP})`;
+        await connection.query(sql);
+        console.log('Item criado com sucesso!');
+    } catch (error) {
+        console.log('Erro ao registrar item:', error);
+    }
 }
 
-
-
 async function transfItem(idA, origem, destino, quant) {
-
-    const saldoOrigem = await confereItem(idA); // Espera o saldo do estoque de origem
+    const saldoOrigem = await confereItem(idA);
     if (saldoOrigem === 0) {
         console.log('O saldo do item ', idA, ' está zerado');
         return;
@@ -163,29 +132,18 @@ async function transfItem(idA, origem, destino, quant) {
         return;
     }
 
-    const saldoDestino = await confereItem(idA); // Verifica o saldo no destino
-    if (saldoDestino == null) { // Se o item não existe no destino
-        await retiraItem(idA, quant, origem); // Retira do estoque de origem
-        await criaItem(idA); // Cria o item no estoque destino
-        await addItem(idA, quant, destino); // Adiciona a quantidade no estoque destino
+    const saldoDestino = await confereItem(idA);
+    if (saldoDestino == null) {
+        await retiraItem(idA, quant, origem);
+        await criaItem(idA);
+        await addItem(idA, quant, destino);
     } else {
-        await addItem(idA, quant, destino); // Se já existe, só adiciona a quantidade
-        await retiraItem(idA, quant, origem); // E retira do estoque de origem
+        await addItem(idA, quant, destino);
+        await retiraItem(idA, quant, origem);
     }
 
     console.log('Produto ', idA, ' transferido do estoque ', origem, ' para o estoque ', destino, ' com sucesso\nQuantidade transferida:', quant);
-
-
-
 }
 
-
-
-//transfItem('03110462', 1, 2, 2)
-
-// criaItem('03110462', 1, 2);
-// transferir item 03110462 do deposito 1 para o 10
-
-
-
-module.exports = { searchEstoque, transfItem }
+// -------------------------  EXPORTAÇÕES -------------------------
+module.exports = { searchEstoque, transfItem, teste };
