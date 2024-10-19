@@ -11,8 +11,17 @@ app.get('/', (req, res) => res.json({
     message: 'funcionando'
 }))
 
-const connection = mysql.createPool(process.env.CONNECTION_STRING)
+const connectionURL = process.env.CONNECTION_STRING;
+const params = url.parse(connectionURL);
+const [user, password] = params.auth.split(':');
 
+const connection = mysql.createPool({
+    host: params.hostname,
+    port: params.port,
+    user: user,
+    password: password,
+    database: params.pathname.split('/')[1]
+})
 // -------------------------  ENDPOINTS -------------------------
 
 app.post('/transfere', async (req, res) => {
