@@ -145,25 +145,25 @@ async function transfere(nm, or, des, quant) {
 
     try {
         const response = await fetch('http://localhost:3000/transfere', {
-            
+
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                id: nm, 
-                origem: or, 
-                destino: des, 
-                quantidade: quant 
+                id: nm,
+                origem: or,
+                destino: des,
+                quantidade: quant
             })
         });
-
-        const result = await response.json();
-
         if (!response.ok) {
             throw new Error(result.error || 'Erro ao transferir');
         }
-        alert('transferencia bem sucedida!');
+        const result = await response.json();
+
+        alert('transferencia bem sucedida!', result);
+        console.log(result)
     } catch (error) {
         alert("erro no front", error.message);
     }
