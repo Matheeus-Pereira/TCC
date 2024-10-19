@@ -1,4 +1,5 @@
 require("dotenv").config();
+const cors = require('cors');
 
 const express = require('express');
 const { transfItem, searchEstoque } = require('./db.js'); // Importando apenas o que é necessário
@@ -6,9 +7,11 @@ const { transfItem, searchEstoque } = require('./db.js'); // Importando apenas o
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+
+
 // -------------------------  MIDDLEWARE -------------------------
 app.use(express.json());
-
+app.use(cors());
 // -------------------------  ENDPOINTS -------------------------
 app.get('/', (req, res) => res.json({
     message: 'funcionando'
@@ -16,7 +19,7 @@ app.get('/', (req, res) => res.json({
 
 app.post('/transfere', async (req, res) => {
     const { id, origem, destino, quantidade } = req.body;
-
+    
     if (!id || !origem || !destino || !quantidade) {
         return res.status(400).json({ error: 'parâmetros inválidos' });
     }

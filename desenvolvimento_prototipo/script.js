@@ -141,19 +141,20 @@ function fechar(button) {
 
 }
 
-async function transfere(id, origem, destino, quantidade) {
+async function transfere(nm, or, des, quant) {
 
     try {
         const response = await fetch('http://localhost:3000/transfere', {
+            
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                id: id, 
-                origem: origem, 
-                destino: destino, 
-                quantidade: quantidade 
+                id: nm, 
+                origem: or, 
+                destino: des, 
+                quantidade: quant 
             })
         });
 
