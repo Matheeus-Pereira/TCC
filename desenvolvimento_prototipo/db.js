@@ -3,7 +3,7 @@ const mysql = require('mysql2/promise');
 
 // -------------------------  CONFIGURAÇÃO DO BANCO DE DADOS -------------------------
 
-const connection = mysql.createPool( process.env.CONNECTION_STRING);
+const connection = mysql.createPool(process.env.CONNECTION_STRING);
 
 // -------------------------  FUNÇÕES DE CONSULTA E MANIPULAÇÃO -------------------------
 
@@ -19,7 +19,7 @@ async function searchEstoque() {
             console.log(`ID: ${estoque.id}, Código: ${estoque.codigo}, Descrição: ${estoque.descricao}`);
         });
         return results
-    
+
     } catch (err) {
         console.error('Erro ao pesquisar:', err);
     }
@@ -44,7 +44,7 @@ async function addItem(nm, qt) {
     try {
         const idEst = await idEstoque(nm);
         if (!idEst) {
-            console.log('Estoque não encontrado para o item:', nm);
+            console.log('Estoque', idEst, ' não encontrado para o item:', nm);
             return;
         }
         const sql = `UPDATE itensEstoque SET quantidade = quantidade + ${qt} WHERE nmr = ${nm} AND id_estoque = ${idEst}`;
@@ -56,39 +56,37 @@ async function addItem(nm, qt) {
 }
 
 async function idEstoque(numero) {
-    return new Promise((resolve, reject) => {
-        const sql = `SELECT id FROM estoques WHERE codigo = ${numero}`;
-        connection.query(sql, (err, result) => {
-            if (err) {
-                reject(err);
-                return;
-            }
-            const idEstoque = result[0]?.id || null;
-            resolve(idEstoque);
-        });
-    });
+
+    const sql = `SELECT id_estoque FROM itensEstoque WHERE nmr = ${numero}`;
+    console.log('encontrando a id do estoque');
+    try {
+        const [result] = await connection.query(sql)
+        return result[0]?.id || null;
+    } catch (err) {
+        console.error('não consegui enconrtrar o estoque:', err);
+        throw err;
+    }
+
 }
 
 async function idProduto(nmr) {
-    return new Promise((resolve, reject) => {
-        const sql = `SELECT id FROM produtos WHERE id = (SELECT id_produto FROM itensEstoque WHERE nmr = ${nmr})`;
-        connection.query(sql, (err, result) => {
-            if (err) {
-                console.log('Erro', err);
-                reject(err);
-                return;
-            }
-            const valor = result[0]?.id || null;
-            resolve(valor);
-        });
-    });
+
+
+    const sql = `SELECT id FROM produtos WHERE codigo=nmr`;
+    try {
+        const [result] = await connection.query(sql);
+        return result[0]?.nmr || null
+    } catch (error) {
+        console.error('não consegui encontrar o produto')
+        throw err;
+    }
 }
+
 
 async function confereItem(nmr) {
     try {
-        const idEst = await idEstoque(nmr);
-        const idProd = await idProduto(nmr);
-        const sql = `SELECT quantidade FROM itensEstoque WHERE id_estoque = ${idEst} AND id_produto = ${idProd}`;
+
+        const sql = `select quantidade from itensestoque where id_estoque = (select id_estoque from itensEstoque where nmr = ${nmr}) and id_produto = (select id from produtos where codigo = ${nmr});`;
 
         const [result] = await connection.query(sql);
         const quantidade = result[0]?.quantidade || 0;
