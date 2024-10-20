@@ -232,9 +232,11 @@ async function tranfmobile() {
 async function trasnfdesktop() {
     const cditem = document.getElementById('cditem').value
     const quant = document.getElementById('qtditem').value
+
     const depori = document.getElementById('dporigem').value
     const depdest = document.getElementById('dpdestino').value
-    console.log(quant, depori, depdest, cditem);
+
+    console.log(cditem, depori, depdest, quant);
     await transfere(cditem, depori, depdest, quant)
 
 }

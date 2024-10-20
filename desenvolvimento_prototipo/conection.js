@@ -28,7 +28,7 @@ app.post('/transfere', async (req, res) => {
         console.log('entrou no try')
         await transfItem(id, origem, destino, quantidade);
         res.status(200).json({ message: 'transferência realizada com sucesso' });
-        console.log('fim fo try')
+        console.log('fim do try')
     } catch (error) {
         console.error('erro ao transferir item:', error);
         res.status(500).json({ error: 'erro ao transferir item' });
