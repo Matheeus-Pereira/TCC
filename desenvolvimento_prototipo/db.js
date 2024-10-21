@@ -91,9 +91,9 @@ async function confereItem(nmr, id) {
     from itensEstoque ie
     join produtos p on ie.id_produto = p.id
     join estoques e on ie.id_estoque = e.id
-    where e.codigo = ? and p.codigo = ?;`;
+    where e.codigo = ${id} and p.codigo = ${nmr};`;
 
-        const [rows] = await connection.query(sql, [id, nmr]);
+        const [rows] = await connection.query(sql);
         const quantidade = rows[0];
         console.log('Quantidade pesquisada', quantidade, "#202");
         return rows[0]?.nmr || 0;;
