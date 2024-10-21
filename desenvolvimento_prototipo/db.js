@@ -86,17 +86,19 @@ async function idProduto(nmr) {
 
 async function confereItem(nmr, id) {
     try {
-        const id_estoque = await idEstoque(id);
-        const id_produto = await idProduto(nmr)
+    
+        const sql = ` select ie.quantidade 
+    from itensEstoque ie
+    join produtos p on ie.id_produto = p.id
+    join estoques e on ie.id_estoque = e.id
+    where e.codigo = ? and p.codigo = ?;`;
 
-        const sql = `select quantidade from itensEstoque where id_produto = ${id_produto} and id_estoque = ${id_estoque};`;
-
-        const [result] = await connection.query(sql);
-        const quantidade = result[0];
+        const [rows] = await connection.query(sql, [id, nmr]);
+        const quantidade = rows[0];
         console.log('Quantidade pesquisada', quantidade, "#202");
-        return result[0]?.nmr || 0;;
+        return rows[0]?.nmr || 0;;
     } catch (error) {
-        console.log('Erro ao conferir item', error);
+        console.log('Erro ao conferir item #203', error);
     }
 }
 
@@ -116,6 +118,7 @@ async function criaItem(numero, estoque) {
 async function transfItem(id, origem, destino, quant) {
 
     const saldoOrigem = await confereItem(id, origem);
+    console.log(' itens consultados')
     if (saldoOrigem === 0) {
         console.log('O saldo do item ', id, ' está zerado');
         return;
@@ -123,13 +126,17 @@ async function transfItem(id, origem, destino, quant) {
         console.log('O saldo do item ', id, ' é menor que a quantidAade transferidAa');
         return;
     }
-
+    console.log('vendo se tem saldo no destino')
     const saldoDestino = await confereItem(id, destino);
+
+
     if (saldoDestino == null) {
+        console.log('\n não tem ')
         await retiraItem(id, quant, origem);
         await criaItem(id, destino);
         await addItem(id, quant, destino);
     } else {
+        console.log(' | tem saldo')
         await addItem(id, quant, destino);
         await retiraItem(id, quant, origem);
     }
