@@ -86,7 +86,7 @@ async function idProduto(nmr) {
 
 async function confereItem(nmr, id) {
     try {
-    
+
         const sql = ` select ie.quantidade 
     from itensEstoque ie
     join produtos p on ie.id_produto = p.id
@@ -94,9 +94,9 @@ async function confereItem(nmr, id) {
     where e.codigo = ${id} and p.codigo = ${nmr};`;
 
         const [rows] = await connection.query(sql);
-        const quantidade = rows[0];
+        const quantidade = rows[0].quantidade;
         console.log('Quantidade pesquisada', quantidade, "#202");
-        return rows[0]?.nmr || 0;;
+        return rows[0]?.quantidade || 0;;
     } catch (error) {
         console.log('Erro ao conferir item #203', error);
     }
@@ -116,32 +116,41 @@ async function criaItem(numero, estoque) {
 }
 
 async function transfItem(id, origem, destino, quant) {
-
+    console.log('Transferindo produto ', id, '  do estoque ', origem, ' para o estoque ', destino, '\nQuantidade transferida:', quant);
     const saldoOrigem = await confereItem(id, origem);
-    console.log(' itens consultados')
+    console.log(' quantidade consultada na origem', saldoOrigem)
     if (saldoOrigem === 0) {
-        console.log('O saldo do item ', id, ' está zerado');
+        console.log('O saldo do item ', id, ' está zerado #1');
         return;
     } else if (saldoOrigem < quant) {
-        console.log('O saldo do item ', id, ' é menor que a quantidAade transferidAa');
+        console.log('O saldo do item ', id, ' é menor que a quantidaade transferida\n saldo de origem:', saldoOrigem, '\nquantidade transferida:', quant, '#2');
         return;
     }
-    console.log('vendo se tem saldo no destino')
+    console.log('vendo se tem saldo no destino #3')
+
     const saldoDestino = await confereItem(id, destino);
-
-
-    if (saldoDestino == null) {
-        console.log('\n não tem ')
+    const destinoNterior = await confereItem(id, destino);
+    console.log('quantidade consultada no destino:', saldoDestino)
+    if (!saldoDestino) {
+        console.log('\n não tem\n retirando item da origem #4')
         await retiraItem(id, quant, origem);
+        console.log('criando relação entre item e destino #5')
         await criaItem(id, destino);
+        console.log('adicionando quantidade ao novo destino #6')
         await addItem(id, quant, destino);
     } else {
-        console.log(' | tem saldo')
+        console.log('tem saldo\napenas adicionando novo item #7')
         await addItem(id, quant, destino);
+        console.log('retirando quantidade da origem')
         await retiraItem(id, quant, origem);
     }
 
-    console.log('Produto ', id, ' transferido do estoque ', origem, ' para o estoque ', destino, ' com sucesso\nQuantidade transferida:', quant);
+    if (saldoDestino > destinoNterior) {
+        console.log('saldo do destino:', saldoDestino, '\nsaldo da origem:', saldoOrigem, 'deve ter funcionado')
+    } else {
+        console.log('não funcinou, verificar')
+    }
+    //   console.log('Produto ', id, ' transferido do estoque ', origem, ' para o estoque ', destino, ' com sucesso\nQuantidade transferida:', quant);
 }
 
 // -------------------------  EXPORTAÇÕES -------------------------

@@ -118,11 +118,13 @@ nav h1 {
     border-top-left-radius: .5rem;
     border-top-right-radius: .5rem;
 }
-
+.transfmobile, .editmobile, #transferencia {
+    transition: opacity 0.4s ease;
+}
 
 .icone {
     position: relative;
-    right: -25vh;
+    right: -24vh;
     top: -6vh;
     background-color: rgb(25, 25, 255);
     width: 10vh;
