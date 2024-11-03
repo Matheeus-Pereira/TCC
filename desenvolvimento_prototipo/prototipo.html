@@ -104,10 +104,10 @@
                     <h3>aponte a camera para o codigo de barras</h3>
 
                     <video autoplay playsinline class="transfmobile"></video>
-                    <canvas id="codereader" ></canvas>
+                    <canvas id="codereader"></canvas>
                     <button class="endButton" onclick="fechar(this)">sair</button>
                     <button id="scan" type="button" onclick="readBarcode(Photo())">Ler codigo</button>
-                    <!-- abrir a tela de transferencia daqui, usar uma variavel para guaradar o codigo -->
+                    <!-- abrir a tela de transferencia daqui, usar uma variavel para guardar o codigo -->
                 </td>
 
             </tr>
@@ -145,10 +145,12 @@
                     <button id="scan" type="button" onclick="tranfmobile()">Transferir</button>
                 </td>
             </tr>
-            <!-- adicionar os botões que usam os dados e acessam o banco -->
+           
         </table>
     </form>
     <!-- ---------------TRANSFERE MOBILE------------------ -->
+
+    <!-- ---------------ARMAZENS DESKTOP------------------ -->
 
     <form id="editarmazem" class="edit">
         <table>
@@ -168,28 +170,12 @@
                 </td>
             </tr>
         </table>
-        <table class="posicomp">
-            <h1>Posição de estoques completa</h1>
-            <tr>
-                <td>
-                    <label for="item">Código do item</label>
-                </td>
-                <td>
-                    <label for="deposito">Deposito</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="text" id="item">
-                </td>
-                <td>
-                    <input type="text" id="deposito">
-                </td>
-            </tr>
-        </table>
         <button type="button" onclick='fechar(this)' class=" endButton">Fechar</button>
         <button onclick="pesquisa()" id="transferButon" class="transferButton">Pesquisar</button>
     </form>
+    <!-- ---------------ARMAZENS DESKTOP------------------ -->
+
+    <!-- ---------------ARMAZENS MOBILE------------------ -->
 
     <form action="" id="armobile" class="editmobile">
         <table>
@@ -209,29 +195,10 @@
                 </td>
             </tr>
         </table>
-        <table class="posimobile">
-            <h1>Posição de estoques completa</h1>
-            <tr>
-                <td>
-                    <label for="item">Código do item</label>
-                </td>
-                <td>
-                    <label for="deposito">Deposito</label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="text" id="item">
-                </td>
-                <td>
-                    <input type="text" id="deposito">
-                </td>
-            </tr>
-        </table>
         <button type="button" onclick='fechar(this)' class=" endButton">Fechar</button>
         <button onclick="pesquisa()" class="transferButton">Pesquisar</button>
     </form>
-
+    <!-- ---------------ARMAZENS MOBILE------------------ -->
 
 </body>
 

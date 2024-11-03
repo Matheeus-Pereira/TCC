@@ -1,20 +1,74 @@
 'use strict';
 
 const icone = document.getElementById('icone');
+
 const menu = document.getElementById('menu');
 const mobilemenu = document.getElementById('mobilemenu')
+
 const transferir = document.getElementById('func1');
 const editEestoque = document.getElementById('func2');
-var canvas = document.getElementById('codereader');
-const ftm = document.getElementById('tmend')
-let uso = false;
 
+
+
+let uso = false;
 let cdbarra = 0
 
-
-
+var canvas = document.getElementById('codereader');
 var video = document.querySelector('video');
 var stream;
+
+icone.addEventListener('click', () => {
+
+    const leftmenu = pxTovh(window.getComputedStyle(menu).left);
+    const value = leftmenu;
+    console.log("teste01")
+    if (value == -42) {
+        menu.style.left = '0vh';
+        console.log("teste02")
+        console.log(value)
+    } else {
+        menu.style.left = '-42vh';
+        console.log("teste03")
+    } if (uso == true) {
+        alert("não é possivel trocar de função sem fechar a função atual");
+        console.log("devia fazer o alerta")
+    }
+
+
+
+});
+
+
+transferir.addEventListener('click', () => {
+    const telaTrasf = document.getElementById('transferencia');
+    const teladisplay = window.getComputedStyle(telaTrasf).display;
+    if (teladisplay == 'none') {
+        telaTrasf.style.display = 'flex';
+        menu.style.left = '-42vh';
+        uso = true;
+    }
+})
+
+
+
+editEestoque.addEventListener('click', () => {
+    const armazens = document.getElementById('editarmazem');
+    const armadisplay = window.getComputedStyle(armazens).display;
+    if (armadisplay == 'none') {
+        armazens.style.display = 'flex';
+        menu.style.left = '-42vh';
+        uso = true;
+    }
+})
+
+function pxTovh(numpx) {
+
+    const px = parseFloat(numpx);
+
+    return parseFloat(((px / window.innerHeight) * 100).toFixed(2));
+}
+
+
 
 var constraints = {
     audio: false,
@@ -25,7 +79,6 @@ var constraints = {
         }
     }
 };
-var erro = document.getElementById('error');
 
 function startcamera() {
     navigator.mediaDevices.getUserMedia(constraints)
@@ -33,7 +86,7 @@ function startcamera() {
             stream = mediaStream;
             video.srcObject = stream;
         })
-
+    uso = true
 
 }
 function stopcamera() {
@@ -73,61 +126,11 @@ function mobilearmz() {
     if (dispmobile == 'none') {
         armobile.style.display = 'flex'
         mobilemenu.style.display = 'none'
-
+        uso = true
     }
 }
 
 
-
-transferir.addEventListener('click', () => {
-    const telaTrasf = document.getElementById('transferencia');
-    const teladisplay = window.getComputedStyle(telaTrasf).display;
-    if (teladisplay == 'none') {
-        telaTrasf.style.display = 'flex';
-        menu.style.left = '-42vh';
-        uso = true;
-    }
-})
-
-
-icone.addEventListener('click', () => {
-
-    const leftmenu = pxTovh(window.getComputedStyle(menu).left);
-    const value = leftmenu;
-    console.log("teste01")
-    if (value == -42) {
-        menu.style.left = '0vh';
-        console.log("teste02")
-        console.log(value)
-    } else {
-        menu.style.left = '-42vh';
-        console.log("teste03")
-    } if (uso == true) {
-        menu.style.left = '-42vh';
-        alert("não é possivel trocar de função sem fechar a função atual");
-        console.log("devia fazer o alerta")
-    }
-
-
-
-});
-
-editEestoque.addEventListener('click', () => {
-    const armazens = document.getElementById('editarmazem');
-    const armadisplay = window.getComputedStyle(armazens).display;
-    if (armadisplay == 'none') {
-        armazens.style.display = 'flex';
-        menu.style.left = '-42vh';
-        uso = true;
-    }
-})
-
-function pxTovh(numpx) {
-
-    const px = parseFloat(numpx);
-
-    return parseFloat(((px / window.innerHeight) * 100).toFixed(2));
-}
 function fechar(button) {
 
     const form = button.closest('form');
@@ -137,7 +140,6 @@ function fechar(button) {
         form.style.display = 'none';
         uso = false;
     }
-    location.reload()
 
 }
 

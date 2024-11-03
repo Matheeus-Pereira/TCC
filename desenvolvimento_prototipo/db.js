@@ -63,9 +63,9 @@ async function idEstoque(numero) {
     console.log('encontrando a id do estoque');
     try {
         const [result] = await connection.query(sql)
-        return result[0]?.id_estoque || null;
+        return result[0]?.id || null;
     } catch (err) {
-        console.error('não consegui enconrtrar o estoque:', err);
+        console.error('não consegui encontrar o estoque:', err);
         throw err;
     }
 
@@ -76,7 +76,7 @@ async function idProduto(nmr) {
     const sql = `SELECT id FROM produtos WHERE codigo=${nmr}`;
     try {
         const [result] = await connection.query(sql);
-        return result[0]?.nmr || null
+        return result[0]?.id || null
     } catch (error) {
         console.error('não consegui encontrar o produto')
         throw err;

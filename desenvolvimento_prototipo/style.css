@@ -106,7 +106,9 @@ nav h1 {
     max-width: 10vw;
     position: relative;
 }
-
+.editmobile *{
+    margin-left: 5vw;
+}
 .posimobile {
     border-top: solid 1px;
     border-top-left-radius: .5rem;
@@ -247,11 +249,11 @@ canvas {
     }
 
     #mobTransf1 {
-        display: none;
+        display: flex;
     }
 
     #mobTransf2 {
-        display: flex;
+        display: none;
     }
 
     .transfmobile {
