@@ -84,14 +84,12 @@ async function idProduto(nmr) {
 }
 
 
-async function confereItem(nmr, id) {
+async function confereItem(item, destino) {
     try {
+        const idE = await idEstoque(destino);
+        const idP = await idProduto(item);
 
-        const sql = ` select ie.quantidade 
-    from itensEstoque ie
-    join produtos p on ie.id_produto = p.id
-    join estoques e on ie.id_estoque = e.id
-    where e.codigo = ${id} and p.codigo = ${nmr};`;
+        const sql = ` select quantidade from itensEstoque where id_estoque=${idE} and id_produto=${idP}`;
 
         const [rows] = await connection.query(sql);
         const quantidade = rows[0].quantidade;
