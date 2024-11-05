@@ -99,7 +99,6 @@ async function confereItem(item, destino) {
         console.log('Erro ao conferir item #203', error);
     }
 }
-
 async function criaItem(numero, estoque) {
     try {
         const idE = await idEstoque(estoque);

@@ -22,16 +22,16 @@ icone.addEventListener('click', () => {
     const leftmenu = pxTovh(window.getComputedStyle(menu).left);
     const value = leftmenu;
     console.log("teste01")
-    if (value == -42) {
+    if (value == -72) {
         menu.style.left = '0vh';
         console.log("teste02")
         console.log(value)
     } else {
-        menu.style.left = '-42vh';
+        menu.style.left = '-72vh';
         console.log("teste03")
     } if (uso == true) {
         alert("não é possivel trocar de função sem fechar a função atual");
-        console.log("devia fazer o alerta")
+        menu.style.left='-72vh'
     }
 
 
@@ -44,7 +44,7 @@ transferir.addEventListener('click', () => {
     const teladisplay = window.getComputedStyle(telaTrasf).display;
     if (teladisplay == 'none') {
         telaTrasf.style.display = 'flex';
-        menu.style.left = '-42vh';
+        menu.style.left = '-72vh';
         uso = true;
     }
 })
@@ -56,7 +56,7 @@ editEestoque.addEventListener('click', () => {
     const armadisplay = window.getComputedStyle(armazens).display;
     if (armadisplay == 'none') {
         armazens.style.display = 'flex';
-        menu.style.left = '-42vh';
+        menu.style.left = '-72vh';
         uso = true;
     }
 })
@@ -171,10 +171,37 @@ async function transfere(nm, or, des, quant) {
     }
 
 }
+async function estoques() {
 
-function editarmz() {
 
+    try {
+        const response = await fetch('http://localhost:3000/estoques');
+
+        const data = response.json()
+        const tabela = document.getElementById('stqbody')
+        tabela.innerHTML = ''
+        data.forEach(estoque => {
+            const linha = document.createElement('tr');
+
+            // Cria célula para o depósito
+            const depositoCelula = document.createElement('td');
+            depositoCelula.textContent = estoque.codigo;
+            linha.appendChild(depositoCelula);
+
+            // Cria célula para a numeração
+            const numeroCelula = document.createElement('td');
+            numeroCelula.textContent = estoque.descricao;
+            linha.appendChild(numeroCelula);
+
+            // Adiciona a linha à tabela
+            tabelaCorpo.appendChild(linha);
+        })
+
+    } catch (erro) {
+
+    }
 }
+
 
 function Photo() {
     var contexto = canvas.getContext('2d');
@@ -242,6 +269,8 @@ async function trasnfdesktop() {
     await transfere(cditem, depori, depdest, quant)
 
 }
+
+
 //---------------------------ACESSANDO ENDPOIT----------------------
 
 

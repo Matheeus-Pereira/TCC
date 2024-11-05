@@ -29,7 +29,7 @@ nav {
     background-color: rgb(25, 25, 255);
     height: 100%;
     width: auto;
-    left: -42vh;
+    left: -72vh;
     transition: left 300ms ease-in-out;
     align-items: center;
     top: 25vh;
@@ -126,7 +126,7 @@ nav h1 {
 
 .icone {
     position: relative;
-    right: -24vh;
+    right: -40vh;
     top: -6vh;
     background-color: rgb(25, 25, 255);
     width: 10vh;

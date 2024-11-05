@@ -46,9 +46,6 @@ app.get('/estoques', async (req, res) => {
         console.error('erro ao buscar estoques', error);
         res.status(500).json({ error: 'erro ao acessar os estoques' })
     }
-
-
-
 });
 
 // -------------------------  INICIA SERVIDOR -------------------------
