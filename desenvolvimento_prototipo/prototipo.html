@@ -155,23 +155,24 @@
     <form id="editarmazem" class="edit">
         <table>
             <h1>Armazens existentes</h1>
-            <tr>
-                <td>
-                    <label for="deposito">Deposito</label>
-                </td>
-                <td id="nome">
+            <thead>
+                <tr>
+                    <td>
+                        <label for="deposito">Deposito</label>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                        <label for="dpnumb">Numeração</label>
+                    </td>
+                </tr>
+            </thead>
+            <tbody id="stqbody">
 
-                </td>
-                <td id="numero">
-
-                </td>
-                <td>
-                    <input type="text" value="1" id="dpnumb">
-                </td>
-            </tr>
+            </tbody>
         </table>
         <button type="button" onclick='fechar(this)' class=" endButton">Fechar</button>
-        <button onclick="pesquisa()" id="transferButon" class="transferButton">Pesquisar</button>
+        <button onclick="pesquisa()" type="button" id="transferButon" class="transferButton">Pesquisar</button>
     </form>
     <!-- ---------------ARMAZENS DESKTOP------------------ -->
 
@@ -186,7 +187,6 @@
                         <label for="deposito">Deposito</label>
                     </td>
                     <td>
-
                     </td>
                     <td>
                         <label for="dpnumb">Numeração</label>

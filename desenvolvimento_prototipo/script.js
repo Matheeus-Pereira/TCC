@@ -31,7 +31,7 @@ icone.addEventListener('click', () => {
         console.log("teste03")
     } if (uso == true) {
         alert("não é possivel trocar de função sem fechar a função atual");
-        menu.style.left='-72vh'
+        menu.style.left = '-72vh'
     }
 
 
@@ -171,34 +171,37 @@ async function transfere(nm, or, des, quant) {
     }
 
 }
-async function estoques() {
+async function pesquisa() {
 
 
     try {
         const response = await fetch('http://localhost:3000/estoques');
-
-        const data = response.json()
+        if (!response.ok) {
+            throw new Error('Erro ao buscar estoques #1')
+        }
+        const data = await response.json()
         const tabela = document.getElementById('stqbody')
         tabela.innerHTML = ''
         data.forEach(estoque => {
+            console.log(estoque.nome, estoque.codigo)
             const linha = document.createElement('tr');
 
             // Cria célula para o depósito
             const depositoCelula = document.createElement('td');
-            depositoCelula.textContent = estoque.codigo;
+            depositoCelula.textContent = estoque.nome;
             linha.appendChild(depositoCelula);
 
             // Cria célula para a numeração
             const numeroCelula = document.createElement('td');
-            numeroCelula.textContent = estoque.descricao;
+            numeroCelula.textContent = estoque.codigo;
             linha.appendChild(numeroCelula);
 
             // Adiciona a linha à tabela
-            tabelaCorpo.appendChild(linha);
+            tabela.appendChild(linha);
         })
 
     } catch (erro) {
-
+        console.error('erro ao pesquisar estoques', erro)
     }
 }
 
