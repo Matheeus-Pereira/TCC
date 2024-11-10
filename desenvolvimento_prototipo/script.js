@@ -125,13 +125,17 @@ function mobileTransf() {
 function mobilearmz() {
     const armobile = document.getElementById('armobile');
     const dispmobile = window.getComputedStyle(armobile).display;
+
     if (dispmobile == 'none') {
         armobile.style.display = 'flex'
         mobilemenu.style.display = 'none'
         uso = true
     }
-}
 
+}
+function reload() {
+   location.reload()
+}
 
 function fechar(button) {
 
@@ -211,6 +215,42 @@ async function pesquisa() {
     }
 }
 
+async function pesquisamobile(){
+    try {
+        const response = await fetch('http://localhost:3000/estoques');
+        if (!response.ok) {
+            throw new Error('Erro ao buscar estoques #1')
+        }
+        const data = await response.json()
+        const tabela = document.getElementById('stqbodymobile')
+        tabela.innerHTML = ''
+
+        data.forEach(estoque => {
+            const linha = document.createElement('tr');
+            console.log(estoque.nome, estoque.codigo)
+
+            // Cria célula para o depósito
+            const depositoCelula = document.createElement('td');
+        
+            depositoCelula.textContent = estoque.nome;
+            linha.appendChild(depositoCelula);
+
+            // Cria célula para a numeração
+            const numeroCelula = document.createElement('input');
+            numeroCelula.type='text'
+            numeroCelula.value = estoque.codigo;
+            linha.appendChild(numeroCelula);
+
+            // Adiciona a linha à tabela
+            tabela.appendChild(linha);
+
+        })
+
+
+    } catch (erro) {
+        console.error('erro ao pesquisar estoques', erro)
+    }
+}
 
 function Photo() {
     var contexto = canvas.getContext('2d');
@@ -224,7 +264,7 @@ function Photo() {
     return img;
 }
 
-//devo definir quando usar essa função e quando não
+
 function readBarcode(Photo) {
 
     if (!Photo || !Photo.src) {

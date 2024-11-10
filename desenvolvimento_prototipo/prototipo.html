@@ -91,11 +91,11 @@
             <thead>
                 <tr>
                     <td>
-                        <label for="deposito">Deposito</label>
+                        <label>Deposito</label>
                     </td>
 
                     <td>
-                        <label for="dpnumb">Numeração</label>
+                        <label>Numeração</label>
                     </td>
                 </tr>
             </thead>
@@ -104,7 +104,7 @@
             </tbody>
         </table>
         <button type="button" onclick='fechar(this)' class=" endButton">Fechar</button>
-        <button onclick="pesquisa()" type="button" id="transferButon" class="transferButton">Pesquisar</button>
+        <button onclick="pesquisamobile()" type="button" class="transferButton">Pesquisar</button>
     </form>
     <!-- ---------------ARMAZENS DESKTOP------------------ -->
 
@@ -178,25 +178,24 @@
 
     <form action="" id="armobile" class="editmobile">
         <table>
-            <h1>Armazéns existentes</h1>
+            <h1>Armazens existentes</h1>
             <thead>
                 <tr>
                     <td>
-                        <label for="deposito">Deposito</label>
+                        <label >Deposito</label>
                     </td>
+
                     <td>
-                    </td>
-                    <td>
-                        <label for="dpnumb">Numeração</label>
+                        <label>Numeração</label>
                     </td>
                 </tr>
             </thead>
-            <tbody id="stqbody">
+            <tbody id="stqbodymobile">
 
             </tbody>
         </table>
-        <button type="button" onclick='fechar(this)' class=" endButton">Fechar</button>
-        <button onclick="pesquisa()" class="transferButton">Pesquisar</button>
+        <button type="button" onclick='reload()' class=" endButton">Fechar</button>
+        <button onclick="pesquisamobile()" type="button"  class="transferButton">Pesquisar</button>
     </form>
     <!-- ---------------ARMAZENS MOBILE------------------ -->
 
