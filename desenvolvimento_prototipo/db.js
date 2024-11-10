@@ -141,13 +141,6 @@ async function transfItem(id, origem, destino, quant) {
         console.log('retirando quantidade da origem')
         await retiraItem(id, quant, origem);
     }
-
-    if (saldoDestino > destinoNterior) {
-        console.log('saldo do destino:', saldoDestino, '\nsaldo da origem:', saldoOrigem, 'deve ter funcionado')
-    } else {
-        console.log('não funcinou, verificar')
-    }
-    //   console.log('Produto ', id, ' transferido do estoque ', origem, ' para o estoque ', destino, ' com sucesso\nQuantidade transferida:', quant);
 }
 
 // -------------------------  EXPORTAÇÕES -------------------------

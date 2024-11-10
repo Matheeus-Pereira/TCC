@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 const icone = document.getElementById('icone');
 
 const menu = document.getElementById('menu');
@@ -182,9 +184,10 @@ async function pesquisa() {
         const data = await response.json()
         const tabela = document.getElementById('stqbody')
         tabela.innerHTML = ''
+
         data.forEach(estoque => {
-            console.log(estoque.nome, estoque.codigo)
             const linha = document.createElement('tr');
+            console.log(estoque.nome, estoque.codigo)
 
             // Cria célula para o depósito
             const depositoCelula = document.createElement('td');
@@ -192,13 +195,16 @@ async function pesquisa() {
             linha.appendChild(depositoCelula);
 
             // Cria célula para a numeração
-            const numeroCelula = document.createElement('td');
-            numeroCelula.textContent = estoque.codigo;
+            const numeroCelula = document.createElement('input');
+            numeroCelula.type='text'
+            numeroCelula.value = estoque.codigo;
             linha.appendChild(numeroCelula);
 
             // Adiciona a linha à tabela
             tabela.appendChild(linha);
+
         })
+
 
     } catch (erro) {
         console.error('erro ao pesquisar estoques', erro)

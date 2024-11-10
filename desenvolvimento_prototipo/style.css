@@ -41,7 +41,11 @@ nav h1 {
     padding-left: 15vh;
     border-bottom: solid 2px;
 }
-
+tbody input{
+margin-left: 1vh;
+max-width: 10vh;
+text-align: center;
+}
 
 .transf1 {
     position: relative;
@@ -106,9 +110,11 @@ nav h1 {
     max-width: 10vw;
     position: relative;
 }
-.editmobile *{
+
+.editmobile * {
     margin-left: 5vw;
 }
+
 .posimobile {
     border-top: solid 1px;
     border-top-left-radius: .5rem;
@@ -120,7 +126,10 @@ nav h1 {
     border-top-left-radius: .5rem;
     border-top-right-radius: .5rem;
 }
-.transfmobile, .editmobile, #transferencia {
+
+.transfmobile,
+.editmobile,
+#transferencia {
     transition: opacity 0.4s ease;
 }
 
