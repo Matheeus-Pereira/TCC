@@ -1,35 +1,23 @@
-
-DESENVOLVIMENTO DE PROTÓTIPO PARA GESTÃO DE ESTOQUES ORIENTADO A LOGÍSTICA 
-Matheus Silva Pereira 
-Guilherme Matei Orbem 
-
+DESENVOLVIMENTO DE PROTÓTIPO PARA GESTÃO DE ESTOQUES ORIENTADO A LOGÍSTICA
+Matheus Silva Pereira
+Guilherme Matei Orbem
 Resumo: Este trabalho de conclusão de curso propõe o desenvolvimento de um protótipo de gestão de estoques orientado à logística, baseado no estudo de caso do autor. O objetivo é aprimorar os processos atuais da empresa sem realizar mudanças radicais ou custosas no funcionamento já estabelecido. Para isso, foi desenvolvido um aplicativo que utiliza uma interface web responsiva para alterar quantidades em um banco de dados. O protótipo busca atender às necessidades operacionais de forma prática, permitindo maior integração entre os setores e eliminando a dependência de coletores de dados convencionais. Além disso, sua implementação visa tornar o fluxo de informações mais ágil e reduzir custos operacionais. A solução proposta, quando integrada a um Warehouse Management System (WMS), pode oferecer melhorias significativas, como aumento de eficiência nos processos logísticos e otimização dos recursos disponíveis. Por meio desta abordagem, espera-se contribuir para a modernização das práticas logísticas da empresa, adaptando o protótipo a diferentes cenários operacionais e demonstrando como a tecnologia pode transformar a gestão de estoques em um elemento estratégico para o sucesso organizacional.
-
 Palavras-chave: Logistica. WMS. Processos.Sistemas.
-
-
 PROTOTYPE DEVELOPMENT FOR LOGISTICS-ORIENTED INVENTORY MANAGEMENT
-
 This course completion work proposes the development of a logistics-oriented inventory management prototype, based on the author's case study. The objective is to improve the company's current processes without making radical or costly changes to the already established operation. To achieve this, an application was developed that uses a responsive web interface to change quantities in a database. The prototype seeks to meet operational needs in a practical way, allowing greater integration between sectors and eliminating dependence on conventional data collectors. Furthermore, its implementation aims to make the flow of information more agile and reduce operational costs. The proposed solution, when integrated with a. Warehouse Management System (WMS), can offer significant improvements, such as increased efficiency in logistics processes and optimization of available resources. Through this approach, it is expected to contribute to the modernization of the company's logistics practices, adapting the prototype to different operational scenarios and demonstrating how technology can transform inventory management into a strategic element for organizational success.
-
  Keywords: Logistics. WMS. Processes.Systems.
-
 INTRODUÇÃO
-
 	A logística está presente desde a concepção de uma ideia até a sua execução prática, desempenhando um papel crucial na sobrevivência e no sucesso das organizações. Mesmo que, em algumas empresas, ela seja aplicada de forma rudimentar ou mal planejada, sua função é vital e deve evoluir para acompanhar as demandas do mercado. Em um ambiente competitivo, a eficiência logística está diretamente ligada ao desempenho empresarial, seja em pequenas indústrias familiares que buscam consolidar sua posição no mercado, seja em empresas maiores que enfrentam desafios operacionais complexos.
 Com essa perspectiva, este trabalho de conclusão de curso propõe o desenvolvimento de um protótipo de gestão de estoques orientado à logística, que visa atender às necessidades operacionais de maneira prática e eficiente. O protótipo foi projetado para se adaptar a diferentes fluxos de movimentação de materiais, promovendo a integração entre setores e eliminando gargalos nos processos logísticos.
 Além disso, o protótipo utiliza tecnologias modernas e acessíveis, como uma interface web responsiva, que permite a interação dinâmica com o banco de dados, promovendo maior agilidade na gestão de estoques. A solução proposta busca reduzir custos operacionais e aumentar a precisão nas informações, eliminando a necessidade de investimentos radicais ou mudanças disruptivas nos processos da empresa.
 O desenvolvimento deste trabalho está alinhado com a crescente demanda por sistemas logísticos eficientes e integrados, que não apenas otimizem recursos, mas também contribuam para a sustentabilidade e competitividade das organizações.
-	
 	A justificativa para o desenvolvimento de um protótipo de gestão de estoques orientado à logística abrange dimensões social, acadêmica e científica, dada a relevância estratégica do tema. Socialmente, a otimização dos processos logísticos reflete diretamente na qualidade de vida da população, uma vez que a eficiência na gestão de estoques impacta a disponibilidade de produtos essenciais, a redução de custos e a minimização de desperdícios. 
 Do ponto de vista acadêmico, a pesquisa sobre gestão de estoques vinculada à logística contribui para o avanço do conhecimento em áreas interdisciplinares, como engenharia de produção, administração e tecnologia da informação. Ao propor um protótipo, a pesquisa não apenas fundamenta-se em teorias existentes, mas também oferece uma abordagem prática que pode servir como base para estudos futuros.
 Cientificamente, o desenvolvimento de um protótipo oferece uma oportunidade para explorar novas tecnologias e metodologias aplicáveis à gestão de estoques e à logística. Ferramentas como inteligência artificial, algoritmos de otimização e análise preditiva podem ser incorporadas, criando soluções mais robustas e inovadoras. A pesquisa, assim, contribui para a construção de conhecimento técnico e prático que pode ser replicado em diferentes contextos, fortalecendo a capacidade das empresas de responder a variabilidades no mercado e aumentar sua competitividade. 
-
 APRESENTAÇÃO DE CONCEITOS
-
 	  A logística está presente em todos os processos produtivos e, aqui no Brasil vem evoluindo desde 1990 quando nossa economia voltou a se abrir para o mundo. Segundo Udo Strassburg o fechamento da economia na ditadura militar nos isolou do livre mercado e, com a abertura da mesma as empresas descobriram o potencial da criação de estoques para ganhar mais dinheiro, redução de desperdícios e custos, e hoje em dia os estoques são considerados indispensáveis para o andamento das atividades.
 Entretanto, o estoque representa um grande investimento e pode gerar problemas financeiros. Segundo Udo Strassburg, estoques podem onerar a empresa com custos de armazenagem, capital investido, controle, deterioração e obsolescência de produtos, entre outros, desempenhando o oposto de sua função principal.
-	 Chopra e meindl  (2003, p.52) afirmam que o estoque existe devido a inadequação entre suprimento e demanda e que em alguns casos pode ser intencional.  Este tipo de manobra deve ser muito bem pensado, pois um estoque pode dar prejuízos catastróficos para a empresa, como reforça Glávio Leal Paura, uma empresa que tem um estoque mal planejado ou falta de controle sobre ele pode ter grandes prejuízos, considerando o custo de manter os produtos disponíveis.
+	 Chopra e meindl (2003, p.52) afirmam que o estoque existe devido a inadequação entre suprimento e demanda e que em alguns casos pode ser intencional.  Este tipo de manobra deve ser muito bem pensado, pois um estoque pode dar prejuízos catastróficos para a empresa, como reforça Glávio Leal Paura, uma empresa que tem um estoque mal planejado ou falta de controle sobre ele pode ter grandes prejuízos, considerando o custo de manter os produtos disponíveis.
  	 Esse investimento é de suma importância do ponto de vista logístico considerando a definição de Ronald H. Ballou que a explica como o processo de planejamento do fluxo de materiais, objetivando a entrega das necessidades na qualidade desejada e no tempo certo, tudo isso enquanto se otimiza e economiza recursos, a fim de entregar com qualidade e bom preço, Conforme Maria Tereza Leme &  Afonso Carlos Corrêa Fleury, a logística pode ser definida em até dez atividades essenciais, entre elas:
 Gestão de estoques
 Armazenagem
@@ -41,9 +29,7 @@ Gerenciamento de transporte multimoda.
 	 Dentro do contexto logístico o estoque é de grande importância e uma atividade primária, esse fator influencia diretamente em outro aspecto importante dentro da logística, como o transporte, com a integração ideal ele se torna cirurgicamente eficaz; ainda segundo Glávio: “O item transporte é fundamental para o funcionamento de qualquer empresa em qualquer parte do mundo. E mesmo que a empresa não use esse serviço de forma direta, ela o usa de forma indireta”
 E então temos o transporte do estoque de um e armazém para outro, seja ligado diretamente com a linha de produção ou ligado com a logística, este processo é feito a princípio de acordo com a cultura organizacional, o que pode acarretar problemas, caso a política de estoques não seja eficiente como reforçam  WANKE, 2000,p177: “A definição de uma política de estoques depende de definições claras para quatro questões: (1) quanto pedir, (2) quando pedir, (3) quanto manter em estoques de segurança e (4) onde localizar. A resposta para cada uma dessas questões passa por diversas análises, relativas ao valor agregado do produto, a previsibilidade de sua demanda e às exigências dos consumidores finais em termos de prazos de entrega e disponibilidade de produto' e Glávio: “Se a empresa tem um estoque mal planejado ou com um controle deficitário, pode ter grandes prejuízos uma vez que é um dos processos logísticos que mais exige investimento, pois parte do princípio em que há a necessidade
 de uma estrutura para manter produtos disponíveis.”
-
 CONTEXTUALIZAÇÃO E FUNDAMENTAÇÃO TEÓRICA 
-
 Ballou define logística como o processo de planejamento que visa entregar as necessidades de maneira rápida na qualidade desejada e no tempo certo
 Essa definição resume perfeitamente o escopo deste Trabalho de conclusão de curso, seu objetivo é atualizar a logística de uma empresa a 30 anos em seu ramo, que como é comum de empresas tradicionais já subestimou esse tipo de trabalho, passa por um processo de organização e inovação nos últimos anos e se prepara para aplicar uma nova tecnologia para acelerar seus procedimentos com leitores de código de barras, este projeto utilizará de uma pesquisa qualitativa acerca do funcionamento de um sistema para gestão de estoques com o objetivo de tornar seu uso prático para o contexto de uma metalúrgica em ascensão e deve se adaptar à qualquer mudança no funcionamento da empresa.
 	A palavra "Logística" possui diversas interpretações quanto à sua origem. Araújo (2003) aponta que alguns estudiosos associam seu surgimento ao termo francês "Loger", que significa acomodar ou alojar, enquanto outros acreditam que ela deriva do grego "Logos", que significa razão, e está relacionada à "arte de calcular". Ao longo da história, diferentes termos foram utilizados até que chegássemos à definição moderna de "administração da logística", conceito validado pela Council of Supply Chain Management Professionals (CSCPM). Termos como distribuição, logística empresarial, administração de materiais e cadeia de abastecimento foram usados, mas todos com a mesma finalidade: gerenciar o fluxo de produtos ao longo da cadeia produtiva até o consumo.
@@ -102,158 +88,67 @@ A logística também começou a adotar práticas mais sustentáveis, considerand
 	A integração entre os setores de TI e logística é cada vez mais importante, pois a infraestrutura tecnológica permite o monitoramento em tempo real e uma gestão integrada das operações. Softwares de gestão logística, como ERP (Enterprise Resource Planning) e TMS (Transportation Management System), centralizam e facilitam o controle das operações, permitindo que as empresas tomem decisões com base em dados atualizados. Essa integração traz maior transparência e otimização para as empresas, resultando em maior satisfação do cliente e eficiência operacional.
 A logística portuária é vital para o comércio internacional, já que grande parte das mercadorias circula por portos ao redor do mundo. A modernização dos portos, com a implementação de tecnologias de automação e monitoramento, tem agilizado os processos de carga e descarga, reduzindo o tempo que os navios passam atracados. Além disso, a infraestrutura portuária deve ser constantemente aprimorada para suportar o aumento do volume de mercadorias e o crescimento do comércio global  (Stecca, 2021).
 	O gerenciamento da cadeia de suprimentos também inclui a logística de serviços, que se refere ao suporte técnico e à manutenção de produtos, especialmente em setores como o de eletrônicos e máquinas industriais. Esse tipo de logística é essencial para garantir o funcionamento contínuo dos produtos após a venda, melhorando a experiência do cliente e fortalecendo a imagem da marca. Empresas que oferecem suporte logístico de serviços conseguem manter a lealdade dos clientes e resolver problemas de maneira mais eficaz. Com o avanço da tecnologia, surgem novas funções, como analistas de dados logísticos e gerentes de sustentabilidade, que exigem habilidades especializadas. A logística, portanto, não só contribui para a economia global, mas também promove a inovação e oferece carreiras promissoras em um mercado em constante evolução  (Stecca, 2021).
-
 PROCEDIMENTOS METODOLÓGICOS 
-
 O objetivo deste trabalho de conclusão de curso é desenvolver um protótipo de sistema para gestão de saldos de estoque, com base no estudo de caso da empresa Inmes Ltda.
 Esta pesquisa é caracterizada como qualitativa, pois busca compreender e analisar, de maneira profunda, os processos, necessidades e desafios associados à gestão de estoques orientada à logística. Diferentemente de abordagens quantitativas, que se concentram em dados numéricos e generalizações estatísticas, a pesquisa qualitativa foca na interpretação e no significado dos fenômenos, permitindo explorar aspectos subjetivos, como a percepção dos envolvidos, as dinâmicas organizacionais e as especificidades dos contextos estudados. Essa abordagem é particularmente relevante, pois possibilita a construção de um protótipo fundamentado não apenas em dados objetivos, mas também nas experiências e perspectivas de stakeholders diretamente impactados. Como destaca Creswell (2014), a abordagem qualitativa é particularmente eficaz para explorar contextos complexos, onde as experiências humanas e os significados atribuídos aos fenômenos desempenham um papel central.
 O método qualitativo também se alinha ao objetivo de desenvolver soluções práticas e aplicáveis, uma vez que privilegia a coleta e a análise de informações ricas e detalhadas, frequentemente obtidas por meio de entrevistas, observações ou estudos de caso. No contexto desta pesquisa, essa metodologia permite identificar pontos críticos nos processos logísticos e nas práticas de gestão de estoques, oferecendo uma base sólida para o desenvolvimento de um protótipo que reflita as reais demandas e peculiaridades do campo. De acordo com Yin (2015), o estudo de caso qualitativo é particularmente útil para investigar situações em que o pesquisador deseja entender os "como" e "porquês" de determinado fenômeno, considerando as circunstâncias reais e específicas do contexto estudado. Assim, a pesquisa qualitativa não apenas contribui para a construção de conhecimento, mas também para a geração de resultados que possam ser implementados de forma eficiente e contextualizada.
 	Com isso em mente foi realizada uma pesquisa qualitativa sobre o funcionamento da logística da empresa bem como o uso do sistema vigente, neste processo houve o estudo do sistema ERP iniflex,que é voltado para produção de plástico através utilização de seus módulos de transferência de itens e apontamento de produção chegando a conclusão de que existe um contentamento no uso de um sistema que não foi feito para o meio metalúrgico mas para a produção de plástico, onde facilmente se encontra funções não utilizadas pela empresa, mas serve a seu propósito geral e, com o ajuste de cultura a empresa consegue funcionar.
 	O estudo levantou um dilema criado com o investimento na atualização deste sistema, foi-se constatado que o sistema a ser implantado não é preparado para lidar com o funcionamento do almoxarifado em relação a transferências de estoque, a lógica programada considera apenas um núcleo de distribuição de materiais para o abastecimento da linha de produção, o que não condiz com o funcionamento atual da empresa, assim para o funcionamento do novo sistema o setor teria que passar por uma mudança impactante.
-	
 A lógica atual divide a fábrica em duas partes e há duas equipes para cada, uma com a parte do recebimento e outra com a expedição, fora as linhas de produção e tudo que chega pelo recebimento deve ser dividido entre os dois núcleos, o procedimento divide o saldo do estoque entre os dois almoxarifados e o sistema a ser implantado não aceita este tipo de movimentação, em resumo haverá um código de barras para cada peça e outro para o saldo todo, as unidades são requisitadas como para ordens de produção e o saldo é todo transferido para um armazém ou outro: 
-Figura 1 – Logica do sistema a ser implantada 
+Figura 1 – Logica do sistema a ser implantada
 Fonte: Academico - este protótipo (2024)
 Assim para transferir parcialmente a quantidade necessária seria preciso bipar cada unidade a ser transferida o que demandaria tempo desnecessário.
 Considerando que o tema do protótipo é recorrente houve o levantamento do que já existe no mercado, esses sistemas são chamados de wms, “Warehouse Management System” literalmente sistema de gerenciamento de armazéns, como nome diz são sistemas feitos para gerência de armazéns e voltados para a logística, como reforça  Conforme Gasnier e Banzato (2001), "um WMS é um sistema de gestão de armazéns, que otimiza todas as atividades operacionais (fluxo de materiais) e administrativas (fluxo de informações) dentro do processo de armazenagem, incluindo recebimento, inspeção, endereçamento, estocagem, separação, embalagem, carregamento, expedição, emissão de documentos, inventário, entre outros, que integradas atendem às necessidades logísticas, maximizando os recursos e minimizando desperdícios de tempo e pessoal".a característica marcante desse tipo de sistema é a utilização de coletores de dados para a realização das operações, assim evitando a dependência na equipe e colaborando para o fortalecimento das lógicas de serviço.
-
 PROCESSO DE DESENVOLVIMENTO 
-
 Para criar um ambiente que represente a ideia do protótipo iniciamos com uma área de acesso aos módulos, depois de definida a estética desejada as classes e ids foram também, assim acabamos com uma barra lateral para acesso as duas funcionalidades desejadas do lado do script foram criadas constantes para cada menu e funcionalidade, variáveis para controle, para guardar o valor do código de barras e o canvas usado para gravar a imagem usando o modo strict em javascript para prevenir erros com variáveis não declaradas e etc.
-
 Figura 1 – Nav de acesso
- 
 Fonte: Academico - este protótipo (2024)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Figura 2 – Constantes para funcionamento do acesso
- 
-
-
  ideia é inspirada em sistemas ERP como Neocorp e Iniflex, desenvolvidos pela Neo Sistemas e pela Projedata respectivamente, o menu recebeu uma aba que puxada revela o acesso as futuras funcionalidades com um ícone que comumentemente representa opções ocultas com classe e id “icone” 
 Figura 3 – imagem do ícone desenhado com css
 Fonte: Academico - este protótipo (2024)
 Para realizar a movimentação da aba de maneira consistente em toda tela foi criada uma função para converter o posicionamento em pixels na tela para vh ou viewport height onde 1vh é igual a 1% da altura da janela, utilizando um cálculo matemático, dentro da função dividimos o pixel pela altura da tela e multiplicamos por 100 usando Tofixed(2) que limita o número de casas decimais em 2 e retornamos este valor 
-Figura 4 – Função para converter px para VH  
+Figura 4 – Função para converter px para VH 
 Fonte: Academico - este protótipo (2024)
 Utilizando esta função foi possível verificar a posição atual da esquerda do menu em vh e utilizando um if determinar se o menu na barra lateral para a esquerda ou para a direita e caso alguma funcionalidade esteja aberta o navegador irá avisar o usuário
 Figura 5 – Evento responsável pela movimentação do menu
- });	O mesmo é feito com o elemento “editEestoque” e o elemento “transferir” quem com addEventListener trocam o display dos módulos,  ocultam novamente o menu sinalizando com a variável uso = true que ele não deve ser utilizado novamente
-
-
-
-
+});	O mesmo é feito com o elemento “editEestoque” e o elemento “transferir” quem com addEventListener trocam o display dos módulos,  ocultam novamente o menu sinalizando com a variável uso = true que ele não deve ser utilizado novamente
 Figura 6 – Evento que revela a tela de transferencia
- 
 Fonte: Academico - este protótipo (2024)
-
 Figura 7 – Evento que revela a tela de edição de estoques
- 
 Fonte: Academico - este protótipo (2024)
-
 Sendo a versão mais simples, dentro do desktop o módulo de transferências é composto por um formulário com uma tabela que organiza os itens dentro dele para o possível envio de informações em outro contexto que utilize o action, dentro deste para a formatação de componentes temos duas tabelas que organizam os itens entre informações do item a ser transferido e informações dos depósitos.
-
-
-
-
-
-
-
 Figura 8 – Elementos HTML que representam a tela de transferencia
- 
 Fonte: Academico - este protótipo (2024)
-
 Dentro da função trasnfdesktop(), os valores dos campos do formulário (código do item, quantidade, depósito de origem e depósito de destino) são capturados usando seus respectivos IDs. Esses valores são então passados para a função transfere de maneira assíncrona, com await garantindo que o processo de transferência aguarde a resposta do servidor (ou qualquer processamento assíncrono dentro da função transfere) antes de concluir.
-
 Figura 9 – Evento que revela a tela de transferencia
- 
 Fonte: Academico - este protótipo (2024)
-
-
 A função transfere() recebe quatro parâmetros: nm (número do item), or (número do depósito de origem), des (número do depósito de destino) e quant (quantidade a ser transferida). Ela faz uma requisição fetch para o servidor local, acessando o endpoint /transfere na porta 3000. Os dados são enviados usando o método POST em formato JSON. Além disso, a função utiliza um bloco try...catch para tratar possíveis erros na comunicação com o servidor, garantindo que, em caso de erro, uma mensagem seja exibida ao usuário.
-
-
-
-
-
-
-
-
-
-
 Figura 10 – Evento que revela a tela de transferencia
- 
 Fonte: Academico - este protótipo (2024)
-
-
 LADO SERVIDOR 
-
 O código do servidor utiliza variáveis de ambiente carregadas através do pacote dotenv, permitindo a configuração flexível do ambiente de execução. Ele importa o middleware cors, que garante a segurança e as permissões de acesso entre diferentes origens, e o framework express, que simplifica a configuração do servidor. Além disso, são importadas funções do arquivo que acessa o banco de dados, permitindo consultar os estoques e realizar transferências de itens.
 Figura 1 – Evento que revela a tela de transferencia
- 
 Fonte: Academico - este protótipo (2024)
-
 A função transfere() acessa o endpoint de mesmo nome e é assíncrona, desestruturando os dados da requisição em id, origem, destino e quantidade. Antes de prosseguir, ela valida esses parâmetros. Dentro de um bloco try...catch, a função tenta chamar transfItem, que interage com o banco de dados. Se a chamada for bem-sucedida, um feedback positivo é retornado; caso contrário, um erro é capturado e uma mensagem de erro é enviada como resposta.
 Figura 2 – Evento que revela a tela de transferencia
- 
 Fonte: Academico - este protótipo (2024)
-
 Ao nos aprofundarmos na função transfItem(), observamos que ela estabelece uma conexão com o banco de dados utilizando o pacote dotenv para gerenciar variáveis de ambiente e o mysql2/promise, uma biblioteca que facilita o uso de Promises e funções assíncronas. Para realizar a conexão, foi utilizada uma pool de conexões, permitindo que várias requisições acessem o banco de dados simultaneamente, melhorando a eficiência e o desempenho da aplicação.
 Figura 3 – Evento que revela a tela de transferencia
- 
 Fonte: Academico - este protótipo (2024)
 Para realizarmos a transferência do item temos que que realizar alguns processos lógicos que foram exclusivamente implantados em funções, começando por:
  Conferir se o item existe no depósito de origem: Verificamos se o item está disponível no estoque de onde ele será retirado.
 Conferir a necessidade de gerar um novo registro do item no saldo de destino: Avaliamos se o item já existe no depósito de destino e, se não existir, decidimos se devemos criar um novo registro para ele.
 Subtrair a quantidade transferida do depósito de origem: Realizamos a atualização do estoque, diminuindo a quantidade disponível no depósito de origem.
 Adicionar a mesma quantidade no depósito de destino: Finalmente, aumentamos a quantidade do item no depósito de destino.
-
 As funções idEstoque e idProduto foram criadas primeiramente para verificar e retornar os ids únicos dos estoques e produtos, respectivamente, com base em um código fornecido. Essas funções garantem a identificação precisa dos itens, evitando conflitos entre eles ao realizar operações no banco de dados. Cada função recebe um código como entrada e retorna o id correspondente, caso exista
-
-
-
-
-
-
-
 Figura 4 – Função  que retorna a id de um produto com base no numero dele
- 
 Fonte: Academico - este protótipo (2024)
-
 Figura 5 – Função que verifica a existencia do estoque do destino da transferencia
- 
 Fonte: Academico - este protótipo (2024)
-
 A primeira função envolvida nesse processo é a confereItem(). Esta função utiliza um bloco try-catch para gerenciar erros. Dentro do bloco try, a função realiza uma consulta de verificação de ids, permitindo verificar a quantidade disponível do item no estoque. A conexão com o banco de dados é gerenciada através de uma pool connection, e a consulta é executada por meio de uma query.
-
-
-
-
-
-Figura 6 – Função que combina ambas 
+Figura 6 – Função que combina ambas
 Fonte: Academico - este protótipo (2024)
-
-
 A função retiraItem() desempenha um papel crucial na lógica de transferência de itens, sendo a segunda etapa desse processo. Ela é responsável por subtrair uma quantidade específica de um item em um estoque determinado. A função opera da seguinte maneira:
 Parâmetros Recebidos: A função aceita três parâmetros: nm (número do item), qt (quantidade a ser retirada) e estoque (identificador do depósito).
 Verificação de IDs: Para garantir que a operação ocorra de forma precisa, a função chama duas outras funções assíncronas: idEstoque(estoque) e idProduto(nm). Essas funções são responsáveis por recuperar os IDs únicos correspondentes ao depósito e ao produto, respectivamente.
@@ -262,249 +157,172 @@ Execução da Query: Se a validação for bem-sucedida, a função constrói e e
 Tratamento de Erros: A função está encapsulada em um bloco try-catch, o que permite capturar qualquer erro que possa ocorrer durante a execução da query. Caso um erro aconteça, uma mensagem de erro é exibida no console, informando que a operação falhou.
 Feedback de Sucesso: Se a operação de subtração for realizada com sucesso, um log é registrado, indicando que o item foi movido corretamente.
 Figura 6 – Função que retira o item do estoque de origem
- 
 Fonte: Academico - este protótipo (2024)
-
-
-
 Após a retirada do item, é necessário verificar se ele já possui um cadastro no estoque de destino. Se não, a função criaItem() é chamada para estabelecer essa relação no banco de dados. A função recebe o número do item e o número do estoque, utiliza funções auxiliares para recuperar os IDs do estoque e do produto, e então constrói uma query de inserção que associa o item ao novo estoque. A função também fornece feedback sobre o sucesso ou falha da operação.
-Figura 7 – Função que adiciona o cadastro do item no estoque de destino 
- 
+Figura 7 – Função que adiciona o cadastro do item no estoque de destino
 Fonte: Academico - este protótipo (2024)
 Tendo certeza que há um registro para o item já pode ser feita a transferência utilizando a função addItem que recebendo os parâmetros de número, quantidade e estoque utilizando a recuperação de ids também feita na anterior mas dessa vez somando a quantidade existente com o valor transferido 
 Figura 8 – Função que adiciona um item já cadastrado
- 
 Fonte: Academico - este protótipo (2024)
 A função transfItem reúne todas as funções individuais desenvolvidas para manipulação de itens nos estoques (confereItem, retiraItem, criaItem, e addItem) em um único fluxo. Ela avalia as condições necessárias para executar cada função, garantindo que a transferência ocorra somente quando o saldo for suficiente e realizando os ajustes adequados no estoque de destino
-
 Figura 9 – Função responsável por utilizar as outras em sequencia 
- 
 Fonte: Academico - este protótipo (2024)
-
 A função searchEstoque executa uma consulta SQL simples para selecionar todos os registros da tabela estoques no banco de dados. Ela retorna os dados de todos os estoques registrados em formato JSON. Caso ocorra algum erro durante a execução da consulta, a função também lida com essa situação, exibindo o erro no console.
-
-Figura 10 – Função responsável por buscar todas as informações dos estoques 
+Figura 10 – Função responsável por buscar todas as informações dos estoques
 Fonte: Academico - este protótipo (2024)
 Banco de dados
-
 O banco é uma parte muito importante de qualquer sistema ERP e neste protótipo não foi diferente, para acessar o banco do protótipo foi feita uma conexão dentro da máquina pessoal do acadêmico, a informações sobre ela estão no arquivo de variáveis de ambiente 
-
 Figura 1 – Variáveis de ambiente .env
- 
 Fonte: Academico - este protótipo (2024)
-
 O banco foi criado com três tabelas que representam os itens, os estoques e a situação de cada item em cada estoque, a principal proposta é que as transferências sejam dinâmicas e para que isso ocorra de maneira segura foi preciso cuidado
-
 A tabela de estoques, armazena informações de diferentes estoques do sistema com uma id única, um código que pode ser mutável e uma descrição opcional
 A tabela produtos, armazena informações sobre os produtos de maneira semelhante, também com um identificador único para cara item 
-
 tabela itensestoque que além de sua id única, também armazena as ids de cada item e de cada estoque, podendo assim triangular o posicionamento de cada item de maneira segura 
 Realizando engenharia reversa é possível visualizar o relacionamento entre as tabela
 Figura 2 – Variáveis de ambiente .env
- 
 Fonte: Academico - este protótipo (2024)
-
-
 Versão mobile
-
 para adaptar o sistema ao ambiente mobile foram criados outros elementos dentro do html com a lógica voltada para apps mobile substituindo o menu lateral utilizado para desktop por um footer centralizado onde as funcionalidades utilizam eventos “onclick” e mantém as mesmas ids 
 Para definir quando os ícones da interface mobile aparecem, foi utilizado o seletor de mídia @media screen no CSS. Esse seletor verifica a largura da tela e, a partir disso, ajusta a exibição dos menus, ocultando ou estilizando elementos de forma apropriada para dispositivos móveis. Isso reduz a necessidade de manipulação via JavaScript, resultando em um código mais enxuto e eficiente.
 No caso do menu mobile, a classe menu associada ao elemento <footer> recebe as propriedades display: flex e flex-direction: column. Essa configuração organiza os itens do menu na vertical, o que é mais adequado para dispositivos móveis. Assim, os botões de funcionalidades como Transferências e Editar Armazéns ficam acessíveis de maneira intuitiva para os usuários.
 Figura 3 – Menu mobile
- 
 Fonte: Academico - este protótipo (2024)
-
-
 Figura 4 – Formatação CSS para o menu
- 
 Fonte: Academico - este protótipo (2024)
 O trecho de código abaixo ajusta o plano de fundo do corpo principal da página para um design responsivo e visualmente agradável em dispositivos móveis. É utilizada uma imagem de fundo com um gradiente linear, definido por linear-gradient, que varia entre tons de azul. O gradiente começa com rgb(92, 92, 252) a 25% e continua até 100%, em um ângulo de 140 graus.
 Além disso, as propriedades de fundo são configuradas para melhorar a experiência do usuário:
-●	background-attachment: fixed: fixa o plano de fundo, de forma que ele não se mova ao rolar a página.
-●	background-repeat: no-repeat: impede que o plano de fundo se repita.
-●	background-size: cover: garante que o plano de fundo cubra toda a área visível da página.
+background-attachment: fixed: fixa o plano de fundo, de forma que ele não se mova ao rolar a página.
+background-repeat: no-repeat: impede que o plano de fundo se repita.
+background-size: cover: garante que o plano de fundo cubra toda a área visível da página.
 Figura 5 – Formatação CSS para o Body da página mobile
- 
 Fonte: Academico - este protótipo (2024)
-
 No design responsivo para dispositivos móveis, o <header> foi mantido com ajustes específicos para se adaptar ao formato mobile. Uma nova imagem foi aplicada como plano de fundo utilizando background: url(img/cabecalhomobile.png). As propriedades do plano de fundo foram configuradas para melhorar a exibição da imagem:
-●	background-size: auto: preserva as proporções originais da imagem.
-●	background-position: center: centraliza a imagem no elemento.
-●	background-repeat: no-repeat: impede que a imagem de fundo se repita.
-●	background-color: rgb(92, 92, 252): define uma cor de fundo de fallback caso a imagem não seja carregada.
+background-size: auto: preserva as proporções originais da imagem.
+background-position: center: centraliza a imagem no elemento.
+background-repeat: no-repeat: impede que a imagem de fundo se repita.
+background-color: rgb(92, 92, 252): define uma cor de fundo de fallback caso a imagem não seja carregada.
 A altura do <header> foi limitada a 14% da altura da tela usando height: 14vh, garantindo que ele permaneça proporcional em diferentes dispositivos.
-
 Figura 6 – Formatação CSS para o header da página mobile
- 
 Fonte: Academico - este protótipo (2024)
-
 Para melhorar a organização visual, a imagem <img> interna no <header> foi ocultada usando o seletor header > img com a propriedade display: none.
-
 Figura 7 – Formatação CSS para o imagem no header
- 
 Fonte: Academico - este protótipo (2024)
 Além disso, a lógica de transferência no HTML foi separada em duas seções, representadas pelas IDs mobTransf1 e mobTransf2. Essas seções desempenham funções distintas:
-●	#mobTransf1: exibe o canvas responsável por ler e obter o valor do código de barras. Está configurado com display: flex para organizar os elementos no layout.
-●	#mobTransf2: inicialmente oculto (display: none), é a seção destinada à transferência de dados obtidos do código de barras.
+#mobTransf1: exibe o canvas responsável por ler e obter o valor do código de barras. Está configurado com display: flex para organizar os elementos no layout.
+#mobTransf2: inicialmente oculto (display: none), é a seção destinada à transferência de dados obtidos do código de barras.
 Figura 8 – Formatação CSS para mobTransf 1 e 2
- 
 Fonte: Academico - este protótipo (2024)
 O trecho abaixo representa o formulário que contém as seções mencionadas anteriormente (mobTransf1 e mobTransf2). Por padrão, o formulário é ocultado utilizando display: none. Isso significa que nenhuma seção será exibida inicialmente.
 Quando o estilo de display da classe transfmobile é alterado, apenas a seção correspondente (como a que contém o canvas e a funcionalidade de captura de foto) se torna visível.
 Além disso, outras propriedades de estilo são configuradas para organizar o layout:
-●	flex-direction: column: organiza os elementos do formulário na vertical.
-●	align-items: center: centraliza os elementos no eixo horizontal.
-●	width: 70vw: define a largura do formulário como 70% da largura da janela de visualização.
-●	height: 55vh: define a altura como 55% da altura da janela de visualização.
-●	margin: 4px: adiciona uma margem ao redor do formulário para espaçamento.
+flex-direction: column: organiza os elementos do formulário na vertical.
+align-items: center: centraliza os elementos no eixo horizontal.
+width: 70vw: define a largura do formulário como 70% da largura da janela de visualização.
+height: 55vh: define a altura como 55% da altura da janela de visualização.
+margin: 4px: adiciona uma margem ao redor do formulário para espaçamento.
 Figura 9 – Formatação CSS para transfmobile
- 
 Fonte: Academico - este protótipo (2024)
 O objetivo deste processo é capturar o valor de um código de barras utilizando a câmera do dispositivo. Após a leitura, a câmera é fechada para que o usuário possa realizar a transferência de dados com base no valor capturado.
 Estrutura do Formulário
-
 O formulário com a classe transfmobile e o ID face contém os seguintes elementos:
-●	Instrução ao usuário: Um cabeçalho <h3> informa ao usuário que deve apontar a câmera para o código de barras.
-●	Elementos de captura:
-○	O elemento <video> exibe o feed da câmera, configurado com autoplay e playsinline para que a reprodução seja automática e sem a necessidade de abrir em tela cheia em dispositivos móveis.
-○	Um <canvas> com o ID codereader é usado para capturar e processar uma imagem do feed do vídeo, que será analisada para a leitura do código de barras.
-●	Botões de interação:
-○	Botão "Sair": Um botão com a classe endButton chama a função fechar(this) ao ser clicado. Essa função é responsável por interromper o feed da câmera e ocultar os elementos relacionados.
-○	Botão "Ler código": Um botão com o ID scan chama a função readBarcode(Photo()) ao ser clicado. Essa função:
-■	Executa a função Photo(), que captura a imagem do código de barras no <canvas>.
-■	Realiza a leitura do código de barras com base na imagem capturada.
+Instrução ao usuário: Um cabeçalho <h3> informa ao usuário que deve apontar a câmera para o código de barras.
+Elementos de captura:
+O elemento <video> exibe o feed da câmera, configurado com autoplay e playsinline para que a reprodução seja automática e sem a necessidade de abrir em tela cheia em dispositivos móveis.
+Um <canvas> com o ID codereader é usado para capturar e processar uma imagem do feed do vídeo, que será analisada para a leitura do código de barras.
+Botões de interação:
+Botão "Sair": Um botão com a classe endButton chama a função fechar(this) ao ser clicado. Essa função é responsável por interromper o feed da câmera e ocultar os elementos relacionados.
+Botão "Ler código": Um botão com o ID scan chama a função readBarcode(Photo()) ao ser clicado. Essa função:
+Executa a função Photo(), que captura a imagem do código de barras no <canvas>.
+Realiza a leitura do código de barras com base na imagem capturada.
 Figura 10 – elementos semanticos do formulário de transferencia
- 
 Fonte: Academico - este protótipo (2024)
 O elemento <video> utilizado na aplicação tem os atributos autoplay e playsinline, que são essenciais para a funcionalidade em dispositivos móveis:
-●	autoplay: faz com que o vídeo seja reproduzido automaticamente assim que o fluxo de mídia é iniciado.
-●	playsinline: garante que o vídeo seja exibido dentro do elemento onde está inserido, sem forçar a exibição em tela cheia, como normalmente ocorre em dispositivos móveis.
+autoplay: faz com que o vídeo seja reproduzido automaticamente assim que o fluxo de mídia é iniciado.
+playsinline: garante que o vídeo seja exibido dentro do elemento onde está inserido, sem forçar a exibição em tela cheia, como normalmente ocorre em dispositivos móveis.
 A câmera utilizada é a câmera traseira do dispositivo, que é ativada assim que o usuário concede permissão ao navegador para acessar o hardware da câmera. Essa funcionalidade é integrada via MediaDevices API, uma ferramenta poderosa para acessar mídias diretamente do dispositivo.
 Progressive Web App (PWA)
-
 A aplicação implementada é configurada como um Progressive Web App (PWA). Isso permite que ela combine características de um site responsivo e de um aplicativo nativo:
-●	Funciona diretamente no navegador, mas pode ser instalada no dispositivo como um app independente.
-●	Tem acesso a recursos como câmera, notificações e armazenamento offline.
-●	É configurada com o arquivo app.webmanifest, que define as propriedades necessárias para que o navegador entenda e trate a aplicação como um PWA
+Funciona diretamente no navegador, mas pode ser instalada no dispositivo como um app independente.
+Tem acesso a recursos como câmera, notificações e armazenamento offline.
+É configurada com o arquivo app.webmanifest, que define as propriedades necessárias para que o navegador entenda e trate a aplicação como um PWA
 Estrutura do Manifesto (app.webmanifest)
-
 No arquivo app.webmanifest, são especificados os atributos básicos para o funcionamento do PWA. Um exemplo de configuração seria:
 Figura 1 – Propriedades do arquivo webmanisfest
- 
 Fonte: Academico - este protótipo (2024)
 Após implementar o PWA e integrá-lo ao HTML, foi possível visualizar como o módulo de captura de vídeo funcionaria. A lógica para acessar a câmera foi construída utilizando a API MediaDevices, que permite interagir com elementos de hardware do dispositivo, como a câmera.
 Para controlar o funcionamento da câmera, foram criadas funções específicas para ligar e desligar o dispositivo. Essas funções utilizam a variável constraints, que define as configurações e restrições necessárias para acessar a câmera.
 Configuração da Variável constraints
-
 A variável constraints é um objeto que define os requisitos de mídia que o navegador deve solicitar ao dispositivo:
-●	audio: false: desativa o áudio, já que ele não é necessário para a funcionalidade.
-●	video: contém configurações específicas para o acesso à câmera.
-○	facingMode: { exact: "environment" }: especifica que a câmera traseira deve ser usada, caso disponível. O uso de "exact" indica que essa configuração é obrigatória.
+audio: false: desativa o áudio, já que ele não é necessário para a funcionalidade.
+video: contém configurações específicas para o acesso à câmera.
+facingMode: { exact: "environment" }: especifica que a câmera traseira deve ser usada, caso disponível. O uso de "exact" indica que essa configuração é obrigatória.
 Figura 2 – Constraits do navegador
- 
 Fonte: Academico - este protótipo (2024)
 A função startcamera() é responsável por iniciar o acesso à câmera do dispositivo utilizando a API MediaDevices. Essa função solicita ao usuário permissão para acessar a câmera com base nas configurações especificadas na variável constraints.
 Se a permissão for concedida, a câmera traseira é ativada e o feed de vídeo é exibido no elemento <video> da página. Caso ocorra um erro (como a permissão ser negada ou a câmera não estar disponível), o código pode exibir uma mensagem de erro apropriada. 
 Figura 3 – Função para ligar a câmera
- 
 Fonte: Academico - este protótipo (2024)
 A função stopcamera() é responsável por finalizar qualquer transmissão de mídia que esteja ativa, verificando se existe um fluxo de mídia (stream) em execução. Ela percorre todas as tracks associadas ao fluxo (neste caso, apenas as de vídeo) e as encerra.
 Essa função garante que os recursos do dispositivo, como a câmera, sejam liberados corretamente, prevenindo consumo desnecessário de energia e processamento.
 Figura 4 – Função para desligar a câmera
- 
 Fonte: Academico - este protótipo (2024)
 Quando o processo de escaneamento do código de barras é bem-sucedido e o código de barras é lido, a segunda tabela será exibida. Ela contém três campos essenciais:
-1.	Quantidade Transferida (#qtditem2): O usuário insere a quantidade de itens a serem transferidos.
-2.	Depósito de Origem (#dporigem2): O usuário insere o nome ou código do depósito de origem.
-3.	Depósito de Destino (#dpdestino2): O usuário insere o nome ou código do depósito de destino.
+Quantidade Transferida (#qtditem2): O usuário insere a quantidade de itens a serem transferidos.
+Depósito de Origem (#dporigem2): O usuário insere o nome ou código do depósito de origem.
+Depósito de Destino (#dpdestino2): O usuário insere o nome ou código do depósito de destino.
 Além disso, há dois botões na parte inferior:
-●	Sair: Chama a função fechar(this) para sair ou cancelar a operação de transferência.
-●	Transferir: Chama a função tranfmobile() para iniciar o processo de transferência dos itens entre os depósitos.
-Figura 5 – Elementos semanticos para realizar a tranferencia após a leitura do cd de barras 
- 
+Sair: Chama a função fechar(this) para sair ou cancelar a operação de transferência.
+Transferir: Chama a função tranfmobile() para iniciar o processo de transferência dos itens entre os depósitos.
+Figura 5 – Elementos semanticos para realizar a tranferencia após a leitura do cd de barras
 Fonte: Academico - este protótipo (2024)
 Este segundo módulo da versão mobile é um formulário que permite ao usuário visualizar e pesquisar os depósitos existentes. Ele faz uma requisição ao servidor para recuperar a lista de depósitos e exibe os dados de forma interativa. A estrutura básica da interface é composta por campos predefinidos, onde o usuário pode visualizar ou modificar informações relacionadas ao depósito.
 Estrutura e Funcionamento do Formulário:
-
-●	Título do Formulário: Um título "Armazéns existentes" é exibido para informar ao usuário qual é o propósito dessa seção.
-●	Campos de Entrada:
-○	Depósito: Um campo de texto que exibe um valor pré-definido, como "depósito geral". Esse valor pode ser alterado, dependendo da interação do usuário.
-○	Numeração: Outro campo de texto onde é exibido o número do depósito (inicialmente 1). Esse campo também pode ser modificado para pesquisas mais específicas.
-●	Botões:
-○	Fechar: Um botão que chama a função fechar(this) para encerrar a operação ou retornar à página anterior.
-○	Pesquisar: Um botão que chama a função pesquisa() para realizar a consulta dos depósitos no servidor com base nos dados preenchidos nos campos de texto.
+Título do Formulário: Um título "Armazéns existentes" é exibido para informar ao usuário qual é o propósito dessa seção.
+Campos de Entrada:
+Depósito: Um campo de texto que exibe um valor pré-definido, como "depósito geral". Esse valor pode ser alterado, dependendo da interação do usuário.
+Numeração: Outro campo de texto onde é exibido o número do depósito (inicialmente 1). Esse campo também pode ser modificado para pesquisas mais específicas.
+Botões:
+Fechar: Um botão que chama a função fechar(this) para encerrar a operação ou retornar à página anterior.
+Pesquisar: Um botão que chama a função pesquisa() para realizar a consulta dos depósitos no servidor com base nos dados preenchidos nos campos de texto.
 Figura 6 – Formatação CSS para o Body da página mobile
- 
 Fonte: Academico - este protótipo (2024)
 Padronização de aparência
-
 Alguns estilos definidos para criar um padrão visual dentro do ambiente mobile
-Figura 6 – Formatação CSS para o padronização 
- 
+Figura 6 – Formatação CSS para o padronização
 Fonte: Academico - este protótipo (2024)
 Para o funcionamento da lógica descrita foi desenvolvida uma função Photo() responsável por desenhar o contexto do vídeo no canvas e salvar  com a largura e altura do elemento e retornar com uma imagem.png 
 Figura 7 – Função que transforma a foto tirada em uma imagem
- 
 Fonte: Academico - este protótipo (2024)
 Tendo como criar uma imagem foi utilizado a biblioteca Quagga para decodificar a imagem dentro da função readBarcode() recebendo-a como parâmetro realizando o tratamento de erro e armazenando o resultado dentro da variável codbarra declarada no início do script
 Figura 8 – Função que interpreta o código de barras
- 
 Fonte: Academico - este protótipo (2024)
 Como é possível ver acima essas funções são utilizadas antes que a tela de transferências de fato apareça, assim que a função read barcode é utilizada as tabelas trocam de lugar para o usuário terminar o procedimento utilizando a função transfmobile() que semelhante a transfdesktop() utiliza do mesmo acesso ao servidor, porém utilizando a váriavel cdbarra com o dado lido pela dupla de funções anterior 
-
-Figura 9 – Função que envia as informações ao lado servidor 
- 
+Figura 9 – Função que envia as informações ao lado servidor
 Fonte: Academico - este protótipo (2024)
-
-Considerações finais  
-
+Considerações finais 
 Desde sua idealização mais primordial o projeto se mostrou um desafio por mais simples que a ideia fosse cada funcionalidade e estilização foi uma experiência nova e desafiadora e cada etapa vencida mostrou possibilidades de melhora dentro do código, com toda certeza o maior desafio deste projeto foi a implementação do leitor de código de barras integrado com a câmera do dispositivo que devido a conflitos entre as funcionalidades da biblioteca quagga e do mediaDevices foi adaptada para funcionar com o canvas, isso provocou uma dificuldade na leitura do código que devido ao tempo permaneceu no projeto até o final e um ponto de melhoria para o futuro.
-REFERÊNCIAS 
-
+REFERÊNCIAS
 ARAÚJO, Aneide O. Gestão Estratégica de Custos Logísticos. Trabalho de Doutorado, Universidade de São Paulo, 2003.
-
 BALLOU, R. H. Logística empresarial: transportes, administração de materiais e distribuição física. São Paulo: Atlas, 2006.
-
 BERTAGLIA,P. R. LOGISTICA E GERENCIAMENTO DA CADEIA DE ABASTECIMENTO.São Paulo: Saraiva,2013.509p.
-
 BOWERSOX, Donald. Gestão Logística de Cadeias de Suprimento. Porto Alegre: Bookman, 2006.
-
 CHRISTOPHER, Martin. Logística e gerenciamento da cadeia de suprimento: estratégia para redução de custos e melhoria dos serviços. São Paulo: Pioneira, 2006.
-
-CODIGO DO VISUAL STUDIO. Codifique mais rápido com IA. Disponível em: https://code.visualstudio.com/. Acesso em: 09 nov. 2024.
-
+CODIGO DO VISUAL STUDIO. Codifique mais rápido com IA. Disponível em: . Acesso em: 09 nov. 2024.
 FIGEUIREDO, Kleber F., FLEURY, Paulo F., WANKE, Peter. Logística Empresarial. São Paulo: Atlas, 2006.
-
-GITHUB. Vamos construir a partir daqui. Disponível em: https://github.com/about Acesso em:  10 nov. 2024.
-
+GITHUB. Vamos construir a partir daqui. Disponível em:  Acesso em:  10 nov. 2024.
 GUILHOTO, Lúcia F. M. e MILONE, Mário C. M. Distribuição e Logística no Mercado Empresarial Brasileiro: Diagnóstico e Novos Desafios Com o Advento da Internet. Ensaio MKT, V Semead.2017
-
 HARA, Celso M. Logística: armazenagem,distribuição e trade marketing. São Paulo: Alínea, 2005.
-
-MDN, Progressive Web Apps. Disponível em: https://developer.mozilla.org/pt-BR/docs/Web/Progressive_web_apps. Acesso em: 09 nov. 2024.
-
+MDN, Progressive Web Apps. Disponível em: . Acesso em: 09 nov. 2024.
 MARIN, J. As fronteiras da Logística. Revista Exame, SÃO Paulo, SP, edição 791, ano 37, maio de 2003.
-
 MARQUES, L. C.; NEVES, E. N, Logística empresarial: avaliação da competência logística no processo de distribuição entre os elos da cadeia de suprimentos, 2021. 
-
 MOURA, R. A. A Logística e as vantagens competitivas. Revista Log & Man, São Paulo, SP, edição 617, ano 13, n. 3, jul. 2002.
-
-MYSQL. MYSQL WORKBENCH. Disponível em: https://www.mysql.com/products/workbench/. Acesso em: 09 nov. 2024.
-
+MYSQL. MYSQL WORKBENCH. Disponível em: . Acesso em: 09 nov. 2024.
 NOGUEIRA, A. de S. Logística Empresarial: um Guia Prático de Operações Logísticas. 2ed. São Paulo: Atlas, 2018.
-
 NOVAES, A. G. Logística e Gerenciamento da Cadeia de Distribuição: Estratégia, Avaliação e Operação. 5ed. São Paulo: Atlas, 2021.
-
 SEVERO, J. Administração de logística integrada: Matérias, PCP e Marketing. Rio de Janeiro, 2006.
-
 SHANKAR, U. et al. Como a internet das coisas afeta a cadeia de suprimentos. Logística de entrada. 2015
-
 STECCA, G. da S.; SILVA, I. C. da; SANTOS, M. A. dos; SOUZA, L. A. de. Logística e sua importância na competitividade das empresas, 2021.
-
-YOUTUBE. O que é Git? O que é versionamento? - Curso de Git e GitHub. Disponível em: https://www.youtube.com/watch?v=xEKo29OWILE&list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA. Acesso em: 09 nov. 2024.
-
-YOUTUBE. O que é JavaScript e Para Que Serve? (Como Funciona o JavaScript / Como Aprender Javascript). Disponível em: https://www.youtube.com/watch?v=IJvVx2HMbNk. Acesso em: 09 nov. 2024.
-
+YOUTUBE. O que é Git? O que é versionamento? - Curso de Git e GitHub. Disponível em: . Acesso em: 09 nov. 2024.
+YOUTUBE. O que é JavaScript e Para Que Serve? (Como Funciona o JavaScript / Como Aprender Javascript). Disponível em: . Acesso em: 09 nov. 2024.
 CRESWELL, J. W. Investigação qualitativa e projeto de pesquisa: escolhendo entre cinco abordagens. 3. ed. Porto Alegre: Penso, 2014.
-
 YIN, R. K. Estudo de caso: planejamento e métodos. 5. ed. Porto Alegre: Bookman, 2015.
