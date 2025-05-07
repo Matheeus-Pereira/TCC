@@ -1,8 +1,8 @@
 require("dotenv").config();
-const cors = require('cors');
+import cors from 'cors';
 
-const express = require('express');
-const { transfItem, searchEstoque } = require('./db.js'); // Importando apenas o que é necessário
+import express, { json } from 'express';
+import { transfItem, searchEstoque } from './db.js'; // Importando apenas o que é necessário
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 
 // -------------------------  MIDDLEWARE -------------------------
-app.use(express.json());
+app.use(json());
 app.use(cors());
 // -------------------------  ENDPOINTS -------------------------
 app.get('/', (req, res) => res.json({

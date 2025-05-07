@@ -19,21 +19,24 @@ var canvas = document.getElementById('codereader');
 var video = document.querySelector('video');
 var stream;
 
+
+
 icone.addEventListener('click', () => {
 
     const leftmenu = pxTovh(window.getComputedStyle(menu).left);
     const value = leftmenu;
     console.log("teste01")
-    if (value == -72) {
+    console.log(value)
+    if (value == -75) {
         menu.style.left = '0vh';
         console.log("teste02")
         console.log(value)
     } else {
-        menu.style.left = '-72vh';
+        menu.style.left = '-75vh';
         console.log("teste03")
     } if (uso == true) {
         alert("não é possivel trocar de função sem fechar a função atual");
-        menu.style.left = '-72vh'
+        menu.style.left = '-75vh'
     }
 
 
@@ -67,7 +70,7 @@ function pxTovh(numpx) {
 
     const px = parseFloat(numpx);
 
-    return parseFloat(((px / window.innerHeight) * 100).toFixed(2));
+    return parseFloat(((px / window.innerHeight) * 100).toFixed());
 }
 
 

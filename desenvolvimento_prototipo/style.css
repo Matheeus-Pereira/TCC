@@ -29,7 +29,7 @@ nav {
     background-color: rgb(25, 25, 255);
     height: 100%;
     width: auto;
-    left: -72vh;
+    left: -75vh;
     transition: left 300ms ease-in-out;
     align-items: center;
     top: 25vh;
@@ -41,10 +41,11 @@ nav h1 {
     padding-left: 15vh;
     border-bottom: solid 2px;
 }
-tbody input{
-margin-left: 1vh;
-max-width: 10vh;
-text-align: center;
+
+tbody input {
+    margin-left: 1vh;
+    max-width: 10vh;
+    text-align: center;
 }
 
 .transf1 {
