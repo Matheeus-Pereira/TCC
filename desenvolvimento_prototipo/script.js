@@ -49,7 +49,7 @@ transferir.addEventListener('click', () => {
     const teladisplay = window.getComputedStyle(telaTrasf).display;
     if (teladisplay == 'none') {
         telaTrasf.style.display = 'flex';
-        menu.style.left = '-72vh';
+        menu.style.left = '-75vh';
         uso = true;
     }
 })
@@ -61,7 +61,7 @@ editEestoque.addEventListener('click', () => {
     const armadisplay = window.getComputedStyle(armazens).display;
     if (armadisplay == 'none') {
         armazens.style.display = 'flex';
-        menu.style.left = '-72vh';
+        menu.style.left = '-75vh';
         uso = true;
     }
 })
