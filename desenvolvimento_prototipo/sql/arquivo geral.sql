@@ -8,7 +8,7 @@ id int auto_increment not null,
 codigo int not null,
 nome varchar(250) not null,
 descricao text,
-primary key(id)
+primary key (id)
 );
 
 create table produtos(
@@ -22,7 +22,7 @@ primary key (id)
 create table itensEstoque(
 id int auto_increment not null,
 descricao varchar(250) default "",
-quantidade varchar(250) default "",
+quantidade int default 0,
 id_estoque int not null,
 id_produto int not null,
 primary key(id),
@@ -42,7 +42,7 @@ values
 (03110462, 'chave de fenda'),
 (04120532, 'chaveta 12');
 
-insert into itensEstoque(id_estoque, id_produto)
+ insert into itensEstoque(id_estoque, id_produto)
 values 
 (2, 1),
 (2, 2);
@@ -59,7 +59,7 @@ update itensEstoque set quantidade=10 where id_produto=2 and id_estoque=2;
 /*retira um item da tabela depois confere*/
 
 /*add um item a tabela*/
-update itensEstoque set quantidade = quantidade+10 where id_produto and id_estoque=1;
+update itensEstoque set quantidade = quantidade+10 where id_produto=1 and id_estoque=2;
 select * from itensEstoque;
 /*add um item a tabela*/
 
@@ -98,4 +98,4 @@ select id from produtos where codigo =03110462;
     from itensEstoque ie
     join produtos p on ie.id_produto = p.id
     join estoques e on ie.id_estoque = e.id
-    where e.codigo = 2 and p.codigo = 03110462;
+    where e.codigo = 1 and p.codigo = 03110462;
