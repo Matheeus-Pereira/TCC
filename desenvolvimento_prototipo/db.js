@@ -1,5 +1,6 @@
-require('dotenv').config();
-const mysql = require('mysql2/promise');
+import dotenv from 'dotenv';
+dotenv.config();
+import mysql from 'mysql2/promise';
 
 // -------------------------  CONFIGURAÇÃO DO BANCO DE DADOS -------------------------
 
@@ -144,4 +145,4 @@ async function transfItem(id, origem, destino, quant) {
 }
 
 // -------------------------  EXPORTAÇÕES -------------------------
-module.exports = { searchEstoque, transfItem };
+export  { searchEstoque, transfItem };
