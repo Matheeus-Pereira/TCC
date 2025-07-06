@@ -137,7 +137,7 @@ function mobilearmz() {
 
 }
 function reload() {
-   location.reload()
+    location.reload()
 }
 
 function fechar(button) {
@@ -203,7 +203,7 @@ async function pesquisa() {
 
             // Cria célula para a numeração
             const numeroCelula = document.createElement('input');
-            numeroCelula.type='text'
+            numeroCelula.type = 'text'
             numeroCelula.value = estoque.codigo;
             linha.appendChild(numeroCelula);
 
@@ -218,7 +218,7 @@ async function pesquisa() {
     }
 }
 
-async function pesquisamobile(){
+async function pesquisamobile() {
     try {
         const response = await fetch('http://localhost:3000/estoques');
         if (!response.ok) {
@@ -234,13 +234,13 @@ async function pesquisamobile(){
 
             // Cria célula para o depósito
             const depositoCelula = document.createElement('td');
-        
+
             depositoCelula.textContent = estoque.nome;
             linha.appendChild(depositoCelula);
 
             // Cria célula para a numeração
             const numeroCelula = document.createElement('input');
-            numeroCelula.type='text'
+            numeroCelula.type = 'text'
             numeroCelula.value = estoque.codigo;
             linha.appendChild(numeroCelula);
 
@@ -262,42 +262,48 @@ function Photo() {
 
     contexto.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-    var img = document.createElement("img");
+    const img = document.createElement("img");
     img.src = canvas.toDataURL("image/png");
     return img;
 }
 
 
-function readBarcode(Photo) {
+function readBarcode() {
+    const Photo = Photo();
 
+    const table = document.getElementById('mobTransf2');
+    const menu = document.getElementById('mobTranf1');
+    table.style.display = 'flex'
+    menu.style.display = 'none'
     if (!Photo || !Photo.src) {
         console.error("imagem não fornecida ou não carregada")
         return;
     }
 
-    Quagga.decodeSingle({
-        src: Photo.src,
-        numOfWorkers: 0,
-        decoder: {
-            readers: ["code_128_reader", "ean_8_reader", "upc_reader"]
-        }
-    },
-        (result) => {
-            // provisório para o mobile 
-            const table = document.getElementById('mobTransf2');
-            const menu = document.getElementById('mobTranf1')
-            if (result && result.codeResult) {
-                console.log('Código de barras lido: ', result.codeResult.code);
-                cdbarra = result.codeResult.code;
-                table.style.display = 'flex'
-                menu.style.display = 'none'
-
-            } else {
-                alert("impossivel ler codigo de barras")
+    Photo.onload = () => {
+        Quagga.decodeSingle({
+            src: Photo.src,
+            numOfWorkers: 0,
+            decoder: {
+                readers: ["code_128_reader", "ean_8_reader", "upc_reader"]
             }
-        });
+        },
+            (result) => {
+
+                if (result && result.codeResult && result.codeResult.code) {
+                    codigo = result.codeResult.code;
+                    console.log('Código de barras lido: ', codigo);
+                    alert('Código de barras lido: ', codigo);
+                    cdbarra = codigo;
 
 
+                } else {
+                    console.warn("Falha ao ler o código de barras.");
+                    alert("impossivel ler codigo de barras")
+                }
+            });
+
+    }
 
 }
 
