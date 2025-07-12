@@ -168,15 +168,17 @@ async function transfere(nm, or, des, quant) {
                 quantidade: quant
             })
         });
+        const result = await response.json();
         if (!response.ok) {
             throw new Error(result.error || 'Erro ao transferir');
         }
-        const result = await response.json();
+
 
         alert('transferencia bem sucedida!', result);
         console.log(result)
     } catch (error) {
-        alert("erro no front", error.message);
+        alert("Erro no front-end: " + error.message);
+        console.error("Erro na transferência:", error);
     }
 
 }
@@ -256,59 +258,70 @@ async function pesquisamobile() {
 }
 
 function Photo() {
-    var contexto = canvas.getContext('2d');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
+    return new Promisse((resolve, reject) => {
 
-    contexto.drawImage(video, 0, 0, canvas.width, canvas.height);
+        if (!canvas || !video) {
+            reject("Canvas ou vídeo não encontrados.");
+            return;
+        }
+        console.log("tirando a foto")
+        alert('foto tirada');
+        var contexto = canvas.getContext('2d');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        contexto.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const img = document.createElement("img");
+        img.src = canvas.toDataURL("image/png");
+        img.onload = () => {
+            resolve(img)
+        }
+        img.inerror = () => {
+            reject("Erro ao carregar imagem")
+        }
+    })
 
-    const img = document.createElement("img");
-    img.src = canvas.toDataURL("image/png");
-    return img;
 }
 
 
-function readBarcode() {
-    const Photo = Photo();
-
+async function readBarcode() {
     const table = document.getElementById('mobTransf2');
-    const menu = document.getElementById('mobTranf1');
-    table.style.display = 'flex'
+    const menu = document.getElementById('mobTransf1');
     menu.style.display = 'none'
-    if (!Photo || !Photo.src) {
-        console.error("imagem não fornecida ou não carregada")
-        return;
-    }
 
-    Photo.onload = () => {
-        Quagga.decodeSingle({
-            src: Photo.src,
-            numOfWorkers: 0,
-            decoder: {
-                readers: ["code_128_reader", "ean_8_reader", "upc_reader"]
-            }
-        },
-            (result) => {
+    try {
+        alert('Tirando foto...')
+        const foto = await Photo();
 
+        alert('Iniciando leitura');
+        const cdbarra = await new Promise((resolve, reject) => {
+            Quagga.decodeSingle({
+                src: foto.src,
+                numOfWorkers: 0,
+                decoders: ["code_128_reader", "ean_8_reader", "upc_reader"]
+            }, (result) => {
                 if (result && result.codeResult && result.codeResult.code) {
-                    codigo = result.codeResult.code;
-                    console.log('Código de barras lido: ', codigo);
-                    alert('Código de barras lido: ', codigo);
-                    cdbarra = codigo;
-
-
+                    resolve(result.codeResult.code);
                 } else {
-                    console.warn("Falha ao ler o código de barras.");
-                    alert("impossivel ler codigo de barras")
+                    reject("Codigo de barras não lido")
                 }
-            });
-
+            })
+        })
+        // codigo deve ter sido lido
+        table.style.display = 'flex'
+        alert("Codigo de barras lido com Sucessp: "+cdbarra);
+        console.log("Codigo" + cdbarra);
+    } catch (err) {
+        alert(err);
+        console.error(err);
     }
-
 }
 
 async function tranfmobile() {
 
+    if (!cdbarra) {
+        alert("Código de barras não lido!");
+        return;
+    }
     const quant = document.getElementById('qtditem2').value
     const depori = document.getElementById('dporigem2').value
     const depdest = document.getElementById('dpdestino2').value
