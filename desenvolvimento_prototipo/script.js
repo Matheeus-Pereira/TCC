@@ -15,9 +15,9 @@ const editEestoque = document.getElementById('func2');
 let uso = false;
 let cdbarra = 0
 
-var canvas = document.getElementById('codereader');
-var video = document.querySelector('video');
-var stream;
+let canvas = document.getElementById('codereader');
+let video = document.querySelector('video');
+let stream = null;
 
 
 
@@ -76,22 +76,28 @@ function pxTovh(numpx) {
 
 
 var constraints = {
+
     audio: false,
     video: {
-        facingMode: {
-            ideal: "environment"
-
-        }
+        facingMode: { ideal: "environment" },
+        width: { ideal: 1280 },
+        height: { ideal: 720 }
     }
 };
 
 function startcamera() {
+    if (uso) return;
     navigator.mediaDevices.getUserMedia(constraints)
         .then((mediaStream) => {
             stream = mediaStream;
             video.srcObject = stream;
+            video.play();
+            uso = true
+        }).catch((err) => {
+            console.error("Erro ao acessar a câmera ", err)
+            alert(err)
         })
-    uso = true
+
 
 }
 function stopcamera() {
@@ -101,6 +107,7 @@ function stopcamera() {
         });
         video.srcObject = null;
         stream = null;
+        uso = false
     }
 
 };
@@ -155,7 +162,7 @@ function fechar(button) {
 async function transfere(nm, or, des, quant) {
 
     try {
-        const response = await fetch('http://localhost:3000/transfere', {
+        const response = await fetch('http://192.168.56.1:3000/transfere', {
 
             method: 'POST',
             headers: {
@@ -222,7 +229,7 @@ async function pesquisa() {
 
 async function pesquisamobile() {
     try {
-        const response = await fetch('http://localhost:3000/estoques');
+        const response = await fetch('http://26.148.67.55:3000 /estoques');
         if (!response.ok) {
             throw new Error('Erro ao buscar estoques #1')
         }
@@ -258,7 +265,7 @@ async function pesquisamobile() {
 }
 
 function Photo() {
-    return new Promisse((resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
         if (!canvas || !video) {
             reject("Canvas ou vídeo não encontrados.");
@@ -293,26 +300,34 @@ async function readBarcode() {
         const foto = await Photo();
 
         alert('Iniciando leitura');
-        const cdbarra = await new Promise((resolve, reject) => {
+        cdbarra = await new Promise((resolve, reject) => {
             Quagga.decodeSingle({
                 src: foto.src,
                 numOfWorkers: 0,
-                decoders: ["code_128_reader", "ean_8_reader", "upc_reader"]
-            }, (result) => {
-                if (result && result.codeResult && result.codeResult.code) {
-                    resolve(result.codeResult.code);
-                } else {
-                    reject("Codigo de barras não lido")
-                }
-            })
+                decoder: {
+                    readers: ["code_128_reader", "ean_8_reader", "upc_reader"]
+                }, locate: true,
+
+            },
+
+                (result) => {
+                    if (result && result.codeResult && result.codeResult.code) {
+                        resolve(result.codeResult.code);
+                    } else {
+                        reject("Codigo de barras não lido")
+
+                    }
+                })
         })
         // codigo deve ter sido lido
         table.style.display = 'flex'
-        alert("Codigo de barras lido com Sucessp: "+cdbarra);
+        alert("Codigo de barras lido com Sucesso: " + cdbarra);
         console.log("Codigo" + cdbarra);
     } catch (err) {
         alert(err);
         console.error(err);
+    } finally {
+        menu.style.display = 'flex'
     }
 }
 
