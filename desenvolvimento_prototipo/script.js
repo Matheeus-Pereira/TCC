@@ -162,7 +162,7 @@ function fechar(button) {
 async function transfere(nm, or, des, quant) {
 
     try {
-        const response = await fetch('http://192.168.56.1:3000/transfere', {
+        const response = await fetch(' https://7812a3cce6f8.ngrok-free.app/transfere', {
 
             method: 'POST',
             headers: {
@@ -193,7 +193,7 @@ async function pesquisa() {
 
 
     try {
-        const response = await fetch('http://localhost:3000/estoques');
+        const response = await fetch('https://7812a3cce6f8.ngrok-free.app/estoques');
         if (!response.ok) {
             throw new Error('Erro ao buscar estoques #1')
         }
@@ -229,7 +229,7 @@ async function pesquisa() {
 
 async function pesquisamobile() {
     try {
-        const response = await fetch('http://26.148.67.55:3000 /estoques');
+        const response = await fetch('https://7812a3cce6f8.ngrok-free.app/estoques');
         if (!response.ok) {
             throw new Error('Erro ao buscar estoques #1')
         }
@@ -271,8 +271,8 @@ function Photo() {
             reject("Canvas ou vídeo não encontrados.");
             return;
         }
-        console.log("tirando a foto")
-        alert('foto tirada');
+        // console.log("tirando a foto")
+        // alert('foto tirada');
         var contexto = canvas.getContext('2d');
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -357,32 +357,13 @@ async function trasnfdesktop() {
 }
 
 
-//---------------------------ACESSANDO ENDPOIT----------------------
+/*
+lembrar antes de apresentar
 
+rodar node para subir o back
 
+criar usar ngrok para gerar o link do back antes de subir o front
 
-// try {
-//     const response = await fetch('http://localhost:3000/transferir-item', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             id: 1, // Substitua com o ID correto do item
-//             origem: 'Estoque A', // Substitua pela origem correta
-//             destino: 'Estoque B', // Substitua pelo destino correto
-//             quantidade: 10 // Substitua pela quantidade correta
-//         })
-//     });
+rodar lt --port 5500 para subir o front
 
-//     const result = await response.json();
-
-//     if (!response.ok) {
-//         throw new Error(result.error || 'Erro ao fazer login');
-//     }
-
-//     alert('Login bem-sucedido!');
-//     window.location.href = "principal.html";
-// } catch (error) {
-//     alert(error.message);
-// }
+testar tudo antes de apresentar.
